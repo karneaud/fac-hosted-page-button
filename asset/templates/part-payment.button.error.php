@@ -1,0 +1,1 @@
+<p class="wp_fac_hosted_page payment_button_error">Error: <?php print $data['code'] ?> - <?php print $data['message'] ?></p>

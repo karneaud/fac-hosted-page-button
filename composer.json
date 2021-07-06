@@ -1,0 +1,30 @@
+{
+    "name": "fac/wp-hosted-page",
+    "type": "wordpress-plugin",
+    "description": "Custom hosted page Wordpress plugin for FAC. Based on WP Plugin Framework by Nirjhar Lo",
+    "keywords": ["wordpress","framework"],
+    "homepage": "https://github.com/nirjharlo/",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Kendall Arneaud",
+            "email": "kendall.arneaud@gmail.com",
+            "homepage": "https://kendallarneaud.me",
+            "role": "Developer"
+        },
+    	 {
+            "name": "Nirjhar Lo",
+            "email": "hi@nirjharlo.com",
+            "homepage": "http://nirjharlo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+    	"shamarkellman/omnipay-first-atlantic-commerce":"*"
+    },
+  	"autoload": {
+          "psr-4": {"WPFac\\HostedPage\\": "./plugin"}
+      }
+
+}
