@@ -24,25 +24,18 @@ if(!function_exists('wp_fac_hosted_page_display_payment_button')) {
 	 * Dislays an html markup payment link button for FAC hosted page
 	 * 
 	 * @method wp_fac_hosted_page_display_payment_button
-	 * @param array $data an array with keys:- currency, amount, transaction_id
-	 * @param string $button_text text to display for button
+	 * @param array $data an array with keys:- currency, amount, transaction_id, text
 	 * 
 	 */ 
-	function wp_fac_hosted_page_display_payment_button($params, $button_text = 'Pay Now') {
-    	$template = 'part-payment.button';
-    	$payment_link = fac_wp_hosted_page_get_payment_link($data) ;
-    	
-    	if(is_wp_error($payment_link )) {
-        	$template = 'part-payment.button.error';
-        	$data = ['code' => $payment_link->get_error_code(), 'message' => $payment_link->get_error_message() ];
-        } else {
-        	$data = [
-        		'text' => 'Pay Now',
-        		'fac_wp_hosted_page_payment_url' => $payment_link['data']['url']
-                            ] ;
-        }
+	function wp_fac_hosted_page_display_payment_button($params) {
     
-    	(new Templating())->render($template, $data);
+    	print do_shortcode(sprintf("[%s amount='%0.2f' currency='' transacion_id='' text='']", 
+                             			WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
+                             			$params['amount'],
+                            			$params['currency'],
+                            			$params['transaction_id'],
+                            			$params['text']
+                            	));
     }
 }
 
@@ -58,7 +51,7 @@ if(!function_exists('wp_fac_hosted_page_get_payment_link')) {
     	$fac = new FacHostedPage();
        	$response = $fac->hosted_page_request([	'amount' => number_format($data['amount'], 2, '.', ''),
                 								'currency' => $data['currency'],
-                								'cardHolderResponseUrl' => site_url(FacHostedPage::HOSTED_PAGE_RESPONSE_URL),
+                								'cardHolderResponseUrl' => site_url(sprintf('/%s/response', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )),
                 								'transactionId' => $data['transaction_id']
                 							]);
     
