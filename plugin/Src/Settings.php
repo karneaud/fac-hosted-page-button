@@ -227,7 +227,7 @@ if ( ! class_exists( 'Settings' ) ) {
 					<form method="post" action="options.php">
 						<?php settings_fields(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
 						do_settings_sections(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
-						submit_button( __( 'Save', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
+						submit_button( __( 'Save Settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
 					</form>
 
 					<?php
@@ -277,7 +277,8 @@ if ( ! class_exists( 'Settings' ) ) {
 			add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_id', __( 'FAC MERCHANT ID', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_id' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
         	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_secret' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
         	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_set' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_name', __( 'FAC Page Name', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_name' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_name', __( 'FAC PAGE NAME', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_name' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_test_mode', __( 'FAC TEST MODE', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_test_mode' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
 		}
 		/**
 		 * Section description
@@ -335,7 +336,8 @@ if ( ! class_exists( 'Settings' ) ) {
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_set'] ?? '',
                    __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
                  );
-		}/**
+		}
+    	/**
 		 * Field explanation
 		 *
 		 * @return Html
@@ -349,6 +351,22 @@ if ( ! class_exists( 'Settings' ) ) {
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_name'] ?? '',
                    __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
+                 );
+		}
+    
+    	/**
+		 * Field explanation
+		 *
+		 * @return Html
+		 */
+		public function settings_field_test_mode() {
+
+			//Choose any one from input, textarea, select or checkbox
+			
+			printf('<input type="checkbox" name="%s_settings[test_mode]" id="%s_settings_test_mode" value="true" %s><label for="tester_1">just a test</label><p class="description" id="tagline-description">Enable test mode?</p>',
+                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
+                   ( isset( ($opt = get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings'))) && $opt ) ? 'checked' : ''
                  );
 		}
     
