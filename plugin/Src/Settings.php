@@ -60,7 +60,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		public function __construct() {
 
 			$this->capability = 'manage_options';
-			$this->menu_page = array( 'name' => null, 'heading' => 'FAC Hosted Page Settings', 'slug' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', );
+			$this->menu_page = array( 'name' => '', 'heading' => 'FAC Hosted Page Settings', 'slug' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', );
 			$this->sub_menu_page = array(
 									'name' => 'FAC Hosted Page Settings',
 									'heading' => 'FAC Hosted Page Settings',
@@ -224,7 +224,7 @@ if ( ! class_exists( 'Settings' ) ) {
 					/**
 					 * Following is the settings form
 					 */ ?>
-					<form method="post" action="">
+					<form method="post" action="options.php">
 						<?php settings_fields(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
 						do_settings_sections(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
 						submit_button( __( 'Save', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
@@ -273,7 +273,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		public function add_settings() {
 
 			add_settings_section( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', __( 'FAC SETTINGS', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN), array( $this,'section_cb' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	register_setting( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_option_group', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', [ 'type' => 'array', 'anitize_callback' => [$this, 'sanitize_settings' ]] );
+        	register_setting( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', [ 'type' => 'array', 'sanitize_callback' => [$this, 'sanitize_settings' ]] );
 			add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_id', __( 'FAC MERCHANT ID', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_id' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
         	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_secret' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
         	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_set' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
@@ -297,7 +297,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 			//Choose any one from input, textarea, select or checkbox
 			
-			printf('<input type="text" class="medium-text" name="%s_settings[merchant_id]" id="%s_merchant_id" value="%s" placeholder="" required /><p class="description" id="tagline-description">The merchant account ID.</p>',
+			printf('<input type="text" class="medium-text" name="%s_settings[merchant_id]" id="%s_merchant_id" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account ID.</p>',
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['merchant_id'] ?? '123456',
@@ -313,7 +313,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 			//Choose any one from input, textarea, select or checkbox
 			
-			printf('<input type="text" class="medium-text" name="%s_settings[merchant_secret]" id="%s_merchant_secret" value="%s" placeholder="" required /><p class="description" id="tagline-description">The merchant account secret.</p>',
+			printf('<input type="text" class="medium-text" name="%s_settings[merchant_secret]" id="%s_merchant_secret" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account secret.</p>',
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['merchant_secret'] ?? 'abcdefg',
@@ -329,7 +329,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 			//Choose any one from input, textarea, select or checkbox
 			
-			printf('<input type="text" class="medium-text" name="%s_settings[page_set]" id="%s_page_set" value="%s" placeholder="" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page set.</p>',
+			printf('<input type="text" class="medium-text" name="%s_settings[page_set]" id="%s_page_set" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page set.</p>',
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_set'] ?? '',
@@ -344,7 +344,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 			//Choose any one from input, textarea, select or checkbox
 			
-			printf('<input type="text" class="medium-text" name="%s_settings[page_name]" id="%s_page_name" value="%s" placeholder="" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page name.</p>',
+			printf('<input type="text" class="medium-text" name="%s_settings[page_name]" id="%s_page_name" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page name.</p>',
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_name'] ?? '',
@@ -354,12 +354,9 @@ if ( ! class_exists( 'Settings' ) ) {
     
     	public function sanitize_settings($input)
         {
-        	$sanitary_values = array();
-			if ( isset( $input['test_0'] ) &&  ) {
-				$sanitary_values['test_0'] = sanitize_text_field( $input['test_0'] );
-			}
-        	
-        	return $sanitary_values;
+        	//$sanitary_values = array();
+			print_r($input);
+        	return $input; //$sanitary_values;
         }
 	}
 } ?>
