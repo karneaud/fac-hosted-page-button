@@ -30,7 +30,7 @@ if(!function_exists('wp_fac_hosted_page_display_payment_button')) {
 	function wp_fac_hosted_page_display_payment_button($params) {
     
     	print do_shortcode(sprintf("[%s amount='%0.2f' currency='' transacion_id='' text='']", 
-                             			WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
+                             			WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "_payment_button", 
                              			$params['amount'],
                             			$params['currency'],
                             			$params['transaction_id'],
