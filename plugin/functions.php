@@ -48,11 +48,13 @@ if(!function_exists('wp_fac_hosted_page_get_payment_link')) {
 	 * @return Array|WP_Error returns payment link url or WP_Error
 	 */ 
 	function wp_fac_hosted_pagee_get_payment_link($data) {
-    	$fac = new FacHostedPage();
+    	$$fac =  wp_fac_hosted_page();
        	$response = $fac->hosted_page_request([	'amount' => number_format($data['amount'], 2, '.', ''),
                 								'currency' => $data['currency'],
                 								'cardHolderResponseUrl' => site_url(sprintf('/%s/response', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )),
-                								'transactionId' => $data['transaction_id']
+                								'transactionId' => $data['transaction_id'],
+                                               	'pageSet' => WP_FAC_HOSTED_PAGE_PAGE_SET,
+                                               	'pageName' => WP_FAC_HOSTED_PAGE_PAGE_NAME
                 							]);
     
     	if(array_key_exists('error', $response))  $response = new \WP_Error($response['code'], $response['message'], $data );
@@ -70,10 +72,19 @@ if(!function_exists('wp_fac_hosted_page_get_result')) {
 	 * @return Array|WP_Error returns results data information or WP_Error
 	 */ 
 	function wp_fac_hosted_page_get_result($token) {
-    	$fac = new FacHostedPage();
+    	$fac =  wp_fac_hosted_page();
        	$response = $fac->hosted_page_result($token);
     	if(array_key_exists('error', $response))  $response = new \WP_Error($response['code'], $response['message'] );
     	
     	return $response;
     }
+}
+if(!function_exists('wp_fac_hosted_page')) {
+	function wp_fac_hosted_page() {
+		return new FacHostedPage([
+        	'merchantId' => WP_FAC_HOSTED_PAGE_MERCHANT_ID,
+        	'merchantPassword' => WP_FAC_HOSTED_PAGE_MERCHANT_PASSWD,
+        	'testMode' => WP_FAC_HOSTED_PAGE_TEST_MODE
+        ]);
+	}
 }
