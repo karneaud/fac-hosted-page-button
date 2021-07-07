@@ -16,17 +16,17 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 //Define basic names
 //Edit the "_PLUGIN" in following namespaces for compatibility with your desired name.
-defined( 'PLUGIN_DEBUG' ) or define( 'PLUGIN_DEBUG', false );
+defined( 'WP_FAC_HOSTED_PAGE_DEBUG' ) or define( 'WP_FAC_HOSTED_PAGE_DEBUG', false );
 
-defined( 'PLUGIN_PATH' ) or define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-defined( 'PLUGIN_FILE' ) or define( 'PLUGIN_FILE', plugin_basename( __FILE__ ) );
+defined( 'WP_FAC_HOSTED_PAGE_PATH' ) or define( 'WP_FAC_HOSTED_PAGE_PATH', plugin_dir_path( __FILE__ ) );
+defined( 'WP_FAC_HOSTED_PAGE_FILE' ) or define( 'WP_FAC_HOSTED_PAGE_FILE', plugin_basename( __FILE__ ) );
 
-defined( 'PLUGIN_TRANSLATE' ) or define( 'PLUGIN_TRANSLATE', plugin_basename( plugin_dir_path( __FILE__ ) . 'asset/ln/' ) );
+defined( 'WP_FAC_HOSTED_PAGE_TRANSLATE' ) or define( 'WP_FAC_HOSTED_PAGE_TRANSLATE', plugin_basename( plugin_dir_path( __FILE__ ) . 'asset/ln/' ) );
 
-defined( 'PLUGIN_JS' ) or define( 'PLUGIN_JS', plugins_url( '/asset/js/', __FILE__  ) );
-defined( 'PLUGIN_CSS' ) or define( 'PLUGIN_CSS', plugins_url( '/asset/css/', __FILE__ ) );
-defined( 'PLUGIN_IMAGE' ) or define( 'PLUGIN_IMAGE', plugins_url( '/asset/img/', __FILE__ ) );
-defined( 'PLUGIN_TEXT_DOMAIN' ) or define( 'PLUGIN_TEXT_DOMAIN' , 'wp-fac-hosted-page') );
+defined( 'WP_FAC_HOSTED_PAGE_JS' ) or define( 'WP_FAC_HOSTED_PAGE_JS', plugins_url( '/asset/js/', __FILE__  ) );
+defined( 'WP_FAC_HOSTED_PAGE_CSS' ) or define( 'WP_FAC_HOSTED_PAGE_CSS', plugins_url( '/asset/css/', __FILE__ ) );
+defined( 'WP_FAC_HOSTED_PAGE_IMAGE' ) or define( 'WP_FAC_HOSTED_PAGE_IMAGE', plugins_url( '/asset/img/', __FILE__ ) );
+defined( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' ) or define( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' , 'wp-fac-hosted-page') );
 
 //The Plugin
 require_once( 'vendor/autoload.php' );
