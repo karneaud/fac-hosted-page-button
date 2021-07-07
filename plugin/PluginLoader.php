@@ -71,7 +71,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		protected static $plugin_page_links = array(
 			array(
-				'slug' => 'wp-plugin-framework.php?page=menu_page_callback',
+				'slug' => 'options-general.php?page='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings'  ,
 				'label' => 'Settings'
 			) );
 
