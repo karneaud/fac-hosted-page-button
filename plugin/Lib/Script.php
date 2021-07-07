@@ -55,10 +55,10 @@ if ( ! class_exists( 'Script' ) ) {
 			// Set condition to add script
 			// if ( ! isset( $_GET['page'] ) || $_GET['page'] != 'pageName' ) return;
 
-			wp_enqueue_script( 'jsName', PLUGIN_JS . 'ui.js', array() );
+			wp_enqueue_script( 'jsName', WP_FAC_HOSTED_PAGE_JS . 'ui.js', array() );
 			wp_localize_script( 'jsName', 'ajax', array( 'ajax_url' => admin_url('admin-ajax.php') ) );
 
-			wp_enqueue_style( 'cssName', PLUGIN_CSS . 'css.css' );
+			wp_enqueue_style( 'cssName', WP_FAC_HOSTED_PAGE_CSS . 'css.css' );
 		}
 
 
@@ -69,10 +69,10 @@ if ( ! class_exists( 'Script' ) ) {
 		 */
 		public function frontend_scripts() {
 
-			wp_enqueue_script( 'jsName', PLUGIN_JS . 'ui.js', array() );
+			wp_enqueue_script( 'jsName', WP_FAC_HOSTED_PAGE_JS . 'ui.js', array() );
 			wp_localize_script( 'jsName', 'ajax', array( 'ajax_url' => admin_url('admin-ajax.php') ) );
 
-			wp_enqueue_style( 'cssName', PLUGIN_CSS . 'css.css' );
+			wp_enqueue_style( 'cssName', WP_FAC_HOSTED_PAGE_CSS . 'css.css' );
 		}
 	}
 } ?>

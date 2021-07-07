@@ -187,7 +187,7 @@ if ( ! class_exists( 'Settings' ) ) {
 					break;
 			}
 
-    		if ( $output ) return $output; // Related to PLUGIN_TABLE()
+    		if ( $output ) return $output; // Related to WP_FAC_HOSTED_PAGE_TABLE()
 		}
 
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'Settings' ) ) {
 			$args   = array(
 						'label'   => __( 'Show per page', 'textdomain' ),
 						'default' => 10,
-						'option'  => 'option_name_per_page' // Related to PLUGIN_TABLE()
+						'option'  => 'option_name_per_page' // Related to WP_FAC_HOSTED_PAGE_TABLE()
 						);
 			add_screen_option( $option, $args );
 			$this->table = new Table(); // Source /lib/table.php

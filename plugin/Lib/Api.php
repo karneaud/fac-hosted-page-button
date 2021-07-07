@@ -6,7 +6,7 @@ namespace WPFac\HostedPage\Lib;
  *
  * Usage:
  *
- * $api = new PLUGIN_API();
+ * $api = new WP_FAC_HOSTED_PAGE_API();
  * $api->endpoint = 'endpoint_url'
  * $api->header = array( "key: $val" )
  * $api->data_type = 'xml' or 'json'

@@ -4,7 +4,7 @@ namespace WPFac\HostedPage\Lib;
 /**
  * Implimentation of WordPress inbuilt functions for creating an extension of a default table class.
  *
- * $my_plugin_name_table = new PLUGIN_TABLE();
+ * $my_plugin_name_table = new WP_FAC_HOSTED_PAGE_TABLE();
  * $my_plugin_name_table->prepare_items();
  * $my_plugin_name_table->display();
  *
