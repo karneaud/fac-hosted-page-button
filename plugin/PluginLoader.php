@@ -35,7 +35,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * Plugin Instance.
 		 *
-		 * @var PLUGIN_BUILD the PLUGIN Instance
+		 * @var WP_FAC_HOSTED_PAGE_BUILD the PLUGIN Instance
 		 */
 		protected static $_instance;
 
@@ -45,7 +45,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $text_domain = PLUGIN_TEXT_DOMAIN;
+		protected static $text_domain = WP_FAC_HOSTED_PAGE_TEXT_DOMAIN;
 
 
 		/**
@@ -61,7 +61,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $plugin_table = PLUGIN_TEXT_DOMAIN . "_table";
+		protected static $plugin_table = WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "_table";
 
 
 		/**
@@ -79,7 +79,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * Main Plugin Instance.
 		 *
-		 * @return PLUGIN_BUILD
+		 * @return WP_FAC_HOSTED_PAGE_BUILD
 		 */
 		public static function instance() {
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 				$schedule = $cron->schedule_task(
 							array(
 							'timestamp' => current_time('timestamp'),
-							//'schedule' can be 'hourly', 'daily', 'weekly' or anything custom as defined in PLUGIN_CRON
+							//'schedule' can be 'hourly', 'daily', 'weekly' or anything custom as defined in WP_FAC_HOSTED_PAGE_CRON
 							'recurrence' => 'schedule',
 							// Use custom_corn_hook to hook into any cron process, anywhere in the plugin.
 							'hook' => 'custom_cron_hook'
@@ -137,30 +137,19 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		}
     
 		public function page_install() {
-        	wp_insert_post([
-            	'post_title'=>'FAC Hosted Page', 
-  				'post_type'=> 'page', 
-  				'post_content'=> '<!-- wp:shortcode -->[ '. PLUGIN_TEXT_DOMAIN . 'page="payment_page"]<!-- /wp:shortcode -->',
-            	'post_name' => PLUGIN_TEXT_DOMAIN
-            ]);
+        	if(!get_page_by_path( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, ARRAY_A, 'page' ))
+        		wp_insert_post([
+            		'post_title'=>'FAC Hosted Page', 
+  					'post_type'=> 'page', 
+  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ),
+            		'post_name' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN
+            	]);
         	
         }
     
     	public function page_uninstall() {
-        
-        	$args=	array(
-        			'name' => PLUGIN_TEXT_DOMAIN,
-        			'post_type' => 'page',
-        			'post_status' => 'publish',
-       				'posts_per_page' => 1
-    		);
-   			
-        	$my_posts = get_posts( $args );
-    		if( !$my_posts ) {
-       			 return null ;
-        	}
-        
-        	wp_delete_post( $my_posts[0]->ID, true);
+        	if(($page = get_page_by_path( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, OBJECT, 'page' )) )
+            	wp_delete_post( $page->ID, true);
         }
 
 		/**
@@ -370,17 +359,17 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 * @return Void
 		 */
 		public function init() {
-			//register_activation_hook( PLUGIN_FILE, array( $this, 'db_install' ) );
-			//register_activation_hook( PLUGIN_FILE, array( $this, 'cron_activation' ) );
-			register_activation_hook( PLUGIN_FILE, array( $this, 'page_install' ) );
+			//register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'db_install' ) );
+			//register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'cron_activation' ) );
+			register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'page_install' ) );
 			//remove the DB and CORN upon uninstallation
 			//using $this won't work here.
-			//register_uninstall_hook( PLUGIN_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'db_uninstall' ) );
-			//register_uninstall_hook( PLUGIN_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'cron_uninstall' ) );
-			register_uninstall_hook( PLUGIN_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'page_uninstall' ) );
+			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'db_uninstall' ) );
+			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'cron_uninstall' ) );
+			register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'page_uninstall' ) );
 			//add_filter( 'rest_authentication_errors', array( $this, 'prevent_unauthorized_rest_access' ) );
 			add_action( 'init', array( $this, 'installation' ) );
-			add_action( PLUGIN_TEXT_DOMAIN . '_display_payment_button', 'wp_fac_hosted_page_display_payment_button', 10, 1);
+			add_action( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_display_payment_button', 'wp_fac_hosted_page_display_payment_button', 10, 1);
         	add_filter( 'rewrite_rules_array',[ $this, 'insert_rewrite_rules'] );
 			add_filter( 'query_vars',[ $this, 'insert_query_vars'] );
 			$this->custom_cron_hook_cb();
@@ -397,7 +386,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
     	
     		$rules = get_option( 'rewrite_rules' );
 
-    		if ( ! isset( $rules[ PLUGIN_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] ) ) {
+    		if ( ! isset( $rules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] ) ) {
         		global $wp_rewrite;
         		$wp_rewrite->flush_rules();
     		}
@@ -406,7 +395,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function insert_rewrite_rules($rules) 
     	{
         	$newrules = array();
-    		$newrules[ PLUGIN_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] = 'index.php?pagename='. PLUGIN_TEXT_DOMAIN .'&transaction_id=$matches[1]';
+    		$newrules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] = 'index.php?pagename='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'&transaction_id=$matches[1]';
     		return $newrules + $rules;
     	}
 
