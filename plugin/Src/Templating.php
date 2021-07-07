@@ -18,12 +18,14 @@ class Templating
 	 */ 
 	public function get_template_part(string $slug, string $name = null, $args = []) 
     {
-    	if(get_template_part($slug, $name, $args )) 
-        else if(get_template_part(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "/{$slug}", $name, $args )) 
-        
-        load_template( 	sprintf("%s/%s.php", plugin_dir_path(__FILE__) , (empty($name)? $slug : "{$slug}-{$name}") ) ,
-                      	array_key_exists('require_once', $args ), 
-                      	$args 
-                     );
+    	if(!get_template_part($slug, $name, $args )) 
+        {
+        	if( !get_template_part(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "/{$slug}", $name, $args ) ) 
+            {
+            	extract($args, EXTR_SKIP);
+            
+        		include( 	sprintf("%s/templates/%s.php", WP_FAC_HOSTED_PAGE_PATH , (empty($name)? $slug : "{$slug}-{$name}") ) );
+            }
+        }
     }
 }
