@@ -26,7 +26,7 @@ defined( 'WP_FAC_HOSTED_PAGE_TRANSLATE' ) or define( 'WP_FAC_HOSTED_PAGE_TRANSLA
 defined( 'WP_FAC_HOSTED_PAGE_JS' ) or define( 'WP_FAC_HOSTED_PAGE_JS', plugins_url( '/asset/js/', __FILE__  ) );
 defined( 'WP_FAC_HOSTED_PAGE_CSS' ) or define( 'WP_FAC_HOSTED_PAGE_CSS', plugins_url( '/asset/css/', __FILE__ ) );
 defined( 'WP_FAC_HOSTED_PAGE_IMAGE' ) or define( 'WP_FAC_HOSTED_PAGE_IMAGE', plugins_url( '/asset/img/', __FILE__ ) );
-defined( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' ) or define( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' , 'wp-fac-hosted-page') );
+defined( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' ) or define( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' , 'wp-fac-hosted-page') ;
 
 //The Plugin
 require_once( 'vendor/autoload.php' );
