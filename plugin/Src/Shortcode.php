@@ -23,7 +23,7 @@ class Shortcode {
 
         	$this->template = new Templating();
 			add_shortcode( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page' , array( $this, 'display_page' ) );
-        	add_shortcode( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_button', [$this, 'create_payment_buton'] );
+        	add_shortcode( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_payment_button', [$this, 'create_payment_buton'] );
 		}
 
 	   /**
@@ -34,24 +34,24 @@ class Shortcode {
 		* @return Html
 		*/
 		public function display_page($atts) {
-
-			$data = shortcode_atts( array(
-										'page' => 'page.success',
-            							'transaction_id' => get_query_var('transaction_id', null)
+			
+            $transaction_id = get_query_var('transaction_id', null);
+        	$data = shortcode_atts( array(
+										'page' => 'page.success'
 									), $atts );
         	$template = "{$data['page']}";
 			if(isset($_GET['ID']) && isset($_GET['RespCode']) && isset($_GET['ReasonCode'])) {
             	$data = wp_fac_hosted_page_get_result($_GET['ID']);
             	if(is_wp_error($data)) {
                 	$template = "page.error";
-                    $data = ['code' => $data->get_error_code(), 'message' => $data->get_error_message(), 'transaction_id' => $data['transaction_id'] ];
+                    $data = ['code' => $data->get_error_code(), 'message' => $data->get_error_message(), 'transaction_id' => $transaction_id ];
                 }
             }
         	
 			ob_start();
-			$this->template->get_template_part("part",$template, $data );
+			$this->template->get_template_part("part", $template, $data );
         	$file_content = ob_get_contents();
-			ob_end_clean ();
+			ob_end_clean();
         
         	return $file_content;
 		}
