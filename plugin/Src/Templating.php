@@ -23,8 +23,7 @@ class Templating
         	if( !get_template_part(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "/{$slug}", $name, $args ) ) 
             {
             	extract($args, EXTR_SKIP);
-            
-        		include( 	sprintf("%s/templates/%s.php", WP_FAC_HOSTED_PAGE_PATH , (empty($name)? $slug : "{$slug}-{$name}") ) );
+            	require_once sprintf("%s/%s.php", WP_FAC_HOSTED_PAGE_TEMPLATE , (empty($name)? $slug : "{$slug}-{$name}") ) ;
             }
         }
     }
