@@ -17,21 +17,18 @@ if ( !defined( 'ABSPATH' ) ) exit;
 //Define basic names
 //Edit the "_PLUGIN" in following namespaces for compatibility with your desired name.
 defined( 'WP_FAC_HOSTED_PAGE_DEBUG' ) or define( 'WP_FAC_HOSTED_PAGE_DEBUG', false );
-
 defined( 'WP_FAC_HOSTED_PAGE_PATH' ) or define( 'WP_FAC_HOSTED_PAGE_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'WP_FAC_HOSTED_PAGE_FILE' ) or define( 'WP_FAC_HOSTED_PAGE_FILE', plugin_basename( __FILE__ ) );
-
 defined( 'WP_FAC_HOSTED_PAGE_TRANSLATE' ) or define( 'WP_FAC_HOSTED_PAGE_TRANSLATE', plugin_basename( plugin_dir_path( __FILE__ ) . 'asset/ln/' ) );
-
-defined( 'WP_FAC_HOSTED_PAGE_TEMPLATE' ) or define( 'WP_FAC_HOSTED_PAGE_TEMPLATE', plugin_dir_path( '/templates/', __FILE__  ) );
+defined( 'WP_FAC_HOSTED_PAGE_TEMPLATE' ) or define( 'WP_FAC_HOSTED_PAGE_TEMPLATE', plugin_dir_path(  __FILE__  )  . 'templates' );
 defined( 'WP_FAC_HOSTED_PAGE_JS' ) or define( 'WP_FAC_HOSTED_PAGE_JS', plugins_url( '/asset/js/', __FILE__  ) );
 defined( 'WP_FAC_HOSTED_PAGE_CSS' ) or define( 'WP_FAC_HOSTED_PAGE_CSS', plugins_url( '/asset/css/', __FILE__ ) );
 defined( 'WP_FAC_HOSTED_PAGE_IMAGE' ) or define( 'WP_FAC_HOSTED_PAGE_IMAGE', plugins_url( '/asset/img/', __FILE__ ) );
 defined( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' ) or define( 'WP_FAC_HOSTED_PAGE_TEXT_DOMAIN' , 'wp-fac-hosted-page') ;
 defined( 'WP_FAC_HOSTED_PAGE_MERCHANT_ID' ) or define( 'WP_FAC_HOSTED_PAGE_MERCHANT_ID' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['merchant_id'] ?? '123456') ;
 defined( 'WP_FAC_HOSTED_PAGE_MERCHANT_PASSWD' ) or define( 'WP_FAC_HOSTED_PAGE_MERCHANT_PASSWD' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['merchant_secret'] ?? 'abcdefg') ;
-defined( 'WP_FAC_HOSTED_PAGE_PAGE_SET' ) or define( 'WP_FAC_HOSTED_PAGE_PAGE_SET' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['page_set'] ?? '123456') ;
-defined( 'WP_FAC_HOSTED_PAGE_PAGE_NAME' ) or define( 'WP_FAC_HOSTED_PAGE_PAGE_NAME' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['page_name'] ?? '123456') ;
+defined( 'WP_FAC_HOSTED_PAGE_PAGE_SET' ) or define( 'WP_FAC_HOSTED_PAGE_PAGE_SET' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['page_set'] ?? 'test1') ;
+defined( 'WP_FAC_HOSTED_PAGE_PAGE_NAME' ) or define( 'WP_FAC_HOSTED_PAGE_PAGE_NAME' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['page_name'] ?? 'test') ;
 defined( 'WP_FAC_HOSTED_PAGE_TEST_MODE' ) or define( 'WP_FAC_HOSTED_PAGE_TEST_MODE' , get_option( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' )['test_mode'] ?? false ) ;
 //The Plugin
 require_once( 'vendor/autoload.php' );
