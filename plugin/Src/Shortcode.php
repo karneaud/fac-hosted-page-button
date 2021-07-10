@@ -27,11 +27,9 @@ class Shortcode {
 		}
 
 	   /**
-	    * Shortcode callback
-		*
+	    * Displays the Fac Hosted Page Results from transaction
 		* @param Array $atts
-		*
-		* @return Html
+		* @return result Html markup
 		*/
 		public function display_page($atts) {
 			
@@ -55,7 +53,11 @@ class Shortcode {
         
         	return $file_content;
 		}
-		
+		/**
+	    * Displays a button for the authorized Fac Hosted Page url
+		* @param Array $atts
+		* @return result Html markup
+		*/
 		public function create_payment_buton($atts)
         {
         	$data = shortcode_atts( array(
@@ -64,9 +66,8 @@ class Shortcode {
             							'transaction_id' => '',
             							'text' => 'Pay Now'
 									), $atts );
-        	
         	$template = 'payment.button';
-    		$payment_link = fac_wp_hosted_page_get_payment_link($data);
+    		$payment_link = wp_fac_hosted_page_get_payment_link($data);
     		if(is_wp_error($payment_link )) {
         		$template = 'payment.button.error';
         		$data = ['code' => $payment_link->get_error_code(), 'message' => $payment_link->get_error_message() ];
