@@ -29,7 +29,7 @@ if(!function_exists('wp_fac_hosted_page_display_payment_button')) {
 	 */ 
 	function wp_fac_hosted_page_display_payment_button($params) {
     
-    	print do_shortcode(sprintf("[%s amount='%0.2f' currency='' transacion_id='' text='']", 
+    	print do_shortcode(sprintf("[%s amount='%0.2f' currency='%s' transaction_id='%s' text='%s']", 
                              			WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "_payment_button", 
                              			$params['amount'],
                             			$params['currency'],
@@ -47,11 +47,11 @@ if(!function_exists('wp_fac_hosted_page_get_payment_link')) {
 	 * @param array $data an array of currency, amount, transaction_id
 	 * @return Array|WP_Error returns payment link url or WP_Error
 	 */ 
-	function wp_fac_hosted_pagee_get_payment_link($data) {
-    	$$fac =  wp_fac_hosted_page();
+	function wp_fac_hosted_page_get_payment_link($data) {
+    	$fac =  wp_fac_hosted_page();
        	$response = $fac->hosted_page_request([	'amount' => number_format($data['amount'], 2, '.', ''),
                 								'currency' => $data['currency'],
-                								'cardHolderResponseUrl' => site_url(sprintf('/%s/response', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )),
+                								'cardHolderResponseUrl' => site_url(sprintf('/%s/response/%s', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, $data['transaction_id'] )),
                 								'transactionId' => $data['transaction_id'],
                                                	'pageSet' => WP_FAC_HOSTED_PAGE_PAGE_SET,
                                                	'pageName' => WP_FAC_HOSTED_PAGE_PAGE_NAME
@@ -80,6 +80,11 @@ if(!function_exists('wp_fac_hosted_page_get_result')) {
     }
 }
 if(!function_exists('wp_fac_hosted_page')) {
+	/**
+	 * Returns Fac class object
+	 * @method wp_fac_hosted_page
+	 * @return Fac returns Fac class object
+	 */ 
 	function wp_fac_hosted_page() {
 		return new FacHostedPage([
         	'merchantId' => WP_FAC_HOSTED_PAGE_MERCHANT_ID,
