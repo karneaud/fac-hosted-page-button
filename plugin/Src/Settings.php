@@ -101,20 +101,26 @@ if ( ! class_exists( 'Settings' ) ) {
 
 
 		/**
-		 * Add a sample main menu page callback
-		 *
+		 * Adds an option page for plugin
 		 * @return Void
 		 */
 		public function menu_page() {
 
 			if ($this->menu_page) {
-				add_menu_page(
+            	add_options_page(
+            		null, // $this->menu_page['name'],
+            		null, //$this->menu_page['heading'],
+            		$this->capability,
+            		$this->menu_page['slug'],
+            		array($this, 'menu_page_callback')
+       			 );
+				/*add_menu_page(
 					$this->menu_page['name'],
 					$this->menu_page['heading'],
 					$this->capability,
 					$this->menu_page['slug'],
 					array( $this, 'menu_page_callback' )
-				);
+				);*/
 			}
 		}
 
@@ -266,8 +272,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 
 		/**
-		 * Add different types of settings and corrosponding sections
-		 *
+		 * Add different types of settings, settings fields and corrosponding sections
 		 * @return Void
 		 */
 		public function add_settings() {
@@ -290,9 +295,8 @@ if ( ! class_exists( 'Settings' ) ) {
 			echo '<p class="description">' . __( 'Setup First Atlantic merchant user account configurations', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ) . '</p>';
 		}
 		/**
-		 * Field explanation
-		 *
-		 * @return Html
+		 * The merchant  account id 
+		 * @return the input Html
 		 */
 		public function settings_field_merchant_id() {
 
@@ -306,9 +310,8 @@ if ( ! class_exists( 'Settings' ) ) {
                  );
 		}
     	/**
-		 * Field explanation
-		 *
-		 * @return Html
+		 * The merchant account password
+		 * @return the input Html
 		 */
 		public function settings_field_merchant_secret() {
 
@@ -322,9 +325,8 @@ if ( ! class_exists( 'Settings' ) ) {
                  );
 		}
     	/**
-		 * Field explanation
-		 *
-		 * @return Html
+		 * The merchant hosted page page set id
+		 * @return the input Html
 		 */
 		public function settings_field_page_set() {
 
@@ -338,9 +340,8 @@ if ( ! class_exists( 'Settings' ) ) {
                  );
 		}
     	/**
-		 * Field explanation
-		 *
-		 * @return Html
+		 * The merchant account hosted page page name
+		 * @return the input Html
 		 */
 		public function settings_field_page_name() {
 
@@ -353,28 +354,27 @@ if ( ! class_exists( 'Settings' ) ) {
                    __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
                  );
 		}
-    
     	/**
-		 * Field explanation
-		 *
-		 * @return Html
+		 * Enables/ Disables plugin test mode
+		 * @return the input Html
 		 */
 		public function settings_field_test_mode() {
 
 			//Choose any one from input, textarea, select or checkbox
-			
-			printf('<input type="checkbox" name="%s_settings[test_mode]" id="%s_settings_test_mode" value="true" %s><label for="tester_1">just a test</label><p class="description" id="tagline-description">Enable test mode?</p>',
+			$opt = get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['test_mode'] ?? false;
+			printf('<input type="checkbox" name="%s_settings[test_mode]" id="%s_settings_test_mode" value="true" %s><label for="%s_settings_test_mode"></label><p class="description" id="tagline-description">Enable test mode?</p>',
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
                    WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   ( isset( ($opt = get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings'))) && $opt ) ? 'checked' : ''
+                   $opt  ? 'checked' : '',
+                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN
                  );
 		}
     
     	public function sanitize_settings($input)
         {
-        	//$sanitary_values = array();
-			print_r($input);
-        	return $input; //$sanitary_values;
+        	$input = array_filter($input);
+        	$input = array_map('sanitize_text_field', $input);
+        	return $input;
         }
 	}
 } ?>
