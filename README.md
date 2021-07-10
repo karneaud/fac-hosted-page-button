@@ -1,27 +1,26 @@
 # FAC WP Hosted Pages
-[![Build Status](https://travis-ci.org/nirjharlo/wp-fac-hosted-page.svg?branch=master)](https://travis-ci.org/nirjharlo/wp-fac-hosted-page)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/nirjharlo/wp-fac-hosted-page/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nirjharlo/wp-fac-hosted-page/)
 
-A WordPress plugin framework is a simple and light-weight base to build any standard WP plugin on top of it. Easily achieve high productivity.
-It contains various items, such as Settings pages, Data tables, Widgets, Metaboxes, Custom Post Types, Shortcodes along with infrastructure for DB operations.
-
-There are extra classes for API integration, AJAX, File upload and Cron jobs.
-
-NOTE: Requires PHP 5.4 and up. Uses `cURL` for API integration class.
+Custom plugin for FAC Hosted Pages. Creates a payment button and a custom result page. The plugin is based off of [WP Pluginf Framework](https://github.com/nirjharlo/wp-plugin-framework) 
 
 ## Usage
-
-1. Change the class namespaces, file namespaces, declarations in `wp-fac-hosted-page.php` and `install.php` before you start coding.
-Also, change the `/asset` file paths in plugin file `wp-fac-hosted-page.php` to your chosen folder path name.
-It's a precaution to avoid conflict.
-
-2. In `plugin/PluginLoader.php` the `PluginLoader` class includes all the files in instance and declares the classes inside them. You can remove existing files or add more files. It's recomended to put all the plugin features instances inside `PluginLoader`. This will help in organising the code.
-
-3. In `plugin/PluginLoader.php` the installation and uninstallation classes contain possible situations, including DB installation and uninstallation features.
+1. Install the plugin 
+2. Configure the FAC Hosted Page settings
+3. Use short code for payment url button and payment page
 
 ## Features
 
 Go through the files in `/lib/class-` and `/src/class-`. First one contains classes for extra features, while the latter is using essential features.
+
+## Notes
+
+Use these hooks for executing additional events
+
+- `do_action('wp-fac-hosted-page_after_page_error', string $transaction_id );` 
+- `do_action('wp-fac-hosted-page_after_page_success', string $transaction_id );` 
+
+
+`/plugin/functions.php` :: Custom helper functions and constants
+`/plugin/PluginLoader.php` :: `PluginLoader` class to initialize plugin
 
 ### `/plugin/lib` Files
 
@@ -36,6 +35,8 @@ Go through the files in `/lib/class-` and `/src/class-`. First one contains clas
 `/plugin/lib/Upload.php` :: `Upload` to upload a file.
 
 `/plugin/lib/Script.php` :: `Script` to add required CSS and JS.
+
+`/plugin/lib/Fac.php` :: `Fac` custom class for FAC hosted page methods
 
 ### `/plugin/src` Files
 
@@ -56,3 +57,10 @@ Go through the files in `/lib/class-` and `/src/class-`. First one contains clas
 `/plugin/src/Query.php`:: `Query` to use post and user query. It uses `wp_pagenavi()` for breadceumbs
 
 `/plugin/src/RestApi.php`:: `RestApi` to extend REST API.
+
+### `/templates` Template Files
+
+`/templates/part-payment.button.php`:: Template for button
+`/templates/part-payment.button.error.php`:: Template error page for button
+`/templates/part-payment.success.php`:: Template for result page
+`/templates/part-payment.error.php`:: Template for result error page
