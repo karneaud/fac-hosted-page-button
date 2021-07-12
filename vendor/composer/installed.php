@@ -5,9 +5,9 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2e46b1557096dc94db22d37f561b6cc65cd21d5a',
+        'reference' => '92872cf32a0e66fc9fb09656672a6f9a2c349b61',
         'name' => 'fac/wp-hosted-page',
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'clue/stream-filter' => array(
@@ -34,7 +34,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2e46b1557096dc94db22d37f561b6cc65cd21d5a',
+            'reference' => '92872cf32a0e66fc9fb09656672a6f9a2c349b61',
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
