@@ -21,7 +21,8 @@
     ],
     "require": {
         "php": ">=7.3",
-    	"shamarkellman/omnipay-first-atlantic-commerce":"*"
+    	"shamarkellman/omnipay-first-atlantic-commerce":"*",
+        "guzzlehttp/guzzle": "^7.3"
     },
   	"autoload": {
           "psr-4": {"WPFac\\HostedPage\\": "./plugin"}
