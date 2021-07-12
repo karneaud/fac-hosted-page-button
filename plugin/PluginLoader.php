@@ -142,7 +142,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
             		'post_title'=>'FAC Hosted Page', 
   					'post_type'=> 'page', 
                 	'post_status' => 'publish',
-  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ),
+  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_page]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ),
             		'post_name' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN
             	]);
         	
