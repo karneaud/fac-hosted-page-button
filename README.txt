@@ -12,7 +12,7 @@ Custom wordpress plugin to facilitate First Atlantic Commerce hosted page paymen
  
 == Description ==
  
-A custom wordpress plugin developed to facilitate online CC payments using First Atlantic Commerce. The plugin creates short codes for a payment link button and a hosted page result page for displaying the results on redirect from FAC transaction.
+A custom wordpress plugin developed to facilitate online CC payments using First Atlantic Commerce Hosted Page service. The plugin creates short codes for a payment link button and a hosted page result page for displaying the results on redirect from FAC transaction.
  
 == Installation ==
  
