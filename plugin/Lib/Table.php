@@ -1,15 +1,15 @@
 <?php
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 /**
  * Implimentation of WordPress inbuilt functions for creating an extension of a default table class.
  *
- * $my_plugin_name_table = new WP_FAC_HOSTED_PAGE_TABLE();
+ * $my_plugin_name_table = new WP_FAC_HOSTED_PAGE_BUTTON_TABLE();
  * $my_plugin_name_table->prepare_items();
  * $my_plugin_name_table->display();
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Table' ) ) {
 

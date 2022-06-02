@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Add Cron schedules and cron task callback
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Cron' ) ) {
 

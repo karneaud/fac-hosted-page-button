@@ -1,7 +1,7 @@
 <?php
-namespace WPFac\HostedPage\Src;
+namespace WPFac\HostedPage\Button\Src;
 
-use WPFac\HostedPage\Lib\Table as Table;
+use WPFac\HostedPage\Button\Lib\Table as Table;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Backend settings page class, can have settings fields or data table
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Settings' ) ) {
 
@@ -60,11 +60,11 @@ if ( ! class_exists( 'Settings' ) ) {
 		public function __construct() {
 
 			$this->capability = 'manage_options';
-			$this->menu_page = array( 'name' => '', 'heading' => 'FAC Hosted Page Settings', 'slug' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', );
+			$this->menu_page = array( 'name' => '', 'heading' => 'WP FAC Hosted Page Button Settings', 'slug' => WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', );
 			$this->sub_menu_page = array(
-									'name' => 'FAC Hosted Page Settings',
-									'heading' => 'FAC Hosted Page Settings',
-									'slug' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings',
+									'name' => 'WP FAC Hosted Page Button Settings',
+									'heading' => 'WP FAC Hosted Page Button Settings',
+									'slug' => WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings',
 									'parent_slug' => 'options-writing.php',
 									'help' => false,//true/false,
 									'screen' => false,//true/false
@@ -193,7 +193,7 @@ if ( ! class_exists( 'Settings' ) ) {
 					break;
 			}
 
-    		if ( $output ) return $output; // Related to WP_FAC_HOSTED_PAGE_TABLE()
+    		if ( $output ) return $output; // Related to WP_FAC_HOSTED_PAGE_BUTTON_TABLE()
 		}
 
 
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Settings' ) ) {
 			$args   = array(
 						'label'   => __( 'Show per page', 'textdomain' ),
 						'default' => 10,
-						'option'  => 'option_name_per_page' // Related to WP_FAC_HOSTED_PAGE_TABLE()
+						'option'  => 'option_name_per_page' // Related to WP_FAC_HOSTED_PAGE_BUTTON_TABLE()
 						);
 			add_screen_option( $option, $args );
 			//$this->table = new Table(); // Source /lib/table.php
@@ -231,9 +231,9 @@ if ( ! class_exists( 'Settings' ) ) {
 					 * Following is the settings form
 					 */ ?>
 					<form method="post" action="options.php">
-						<?php settings_fields(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
-						do_settings_sections(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings');
-						submit_button( __( 'Save Settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
+						<?php settings_fields(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings');
+						do_settings_sections(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings');
+						submit_button( __( 'Save Settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
 					</form>
 
 					<?php
@@ -277,13 +277,13 @@ if ( ! class_exists( 'Settings' ) ) {
 		 */
 		public function add_settings() {
 
-			add_settings_section( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', __( 'FAC SETTINGS', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN), array( $this,'section_cb' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	register_setting( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings', [ 'type' => 'array', 'sanitize_callback' => [$this, 'sanitize_settings' ]] );
-			add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_id', __( 'FAC MERCHANT ID', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_id' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_secret' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_set' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_page_name', __( 'FAC PAGE NAME', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_page_name' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_test_mode', __( 'FAC TEST MODE', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ), array( $this, 'settings_field_test_mode' ), WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings' );
+			add_settings_section( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', __( 'FAC SETTINGS', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN), array( $this,'section_cb' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	register_setting( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', [ 'type' => 'array', 'sanitize_callback' => [$this, 'sanitize_settings' ]] );
+			add_settings_field( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_merchant_id', __( 'FAC MERCHANT ID', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_id' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_secret' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_page_set' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_name', __( 'FAC PAGE NAME', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_page_name' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_test_mode', __( 'FAC TEST MODE', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_test_mode' ), WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
 		}
 		/**
 		 * Section description
@@ -292,7 +292,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		 */
 		public function section_cb() {
 
-			echo '<p class="description">' . __( 'Setup First Atlantic merchant user account configurations', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ) . '</p>';
+			echo '<p class="description">' . __( 'Setup First Atlantic merchant user account configurations', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ) . '</p>';
 		}
 		/**
 		 * The merchant  account id 
@@ -303,10 +303,10 @@ if ( ! class_exists( 'Settings' ) ) {
 			//Choose any one from input, textarea, select or checkbox
 			
 			printf('<input type="text" class="medium-text" name="%s_settings[merchant_id]" id="%s_merchant_id" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account ID.</p>',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['merchant_id'] ?? '123456',
-                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   get_option(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['merchant_id'] ?? '123456',
+                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
                  );
 		}
     	/**
@@ -318,10 +318,10 @@ if ( ! class_exists( 'Settings' ) ) {
 			//Choose any one from input, textarea, select or checkbox
 			
 			printf('<input type="text" class="medium-text" name="%s_settings[merchant_secret]" id="%s_merchant_secret" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account secret.</p>',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['merchant_secret'] ?? 'abcdefg',
-                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   get_option(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['merchant_secret'] ?? 'abcdefg',
+                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
                  );
 		}
     	/**
@@ -333,10 +333,10 @@ if ( ! class_exists( 'Settings' ) ) {
 			//Choose any one from input, textarea, select or checkbox
 			
 			printf('<input type="text" class="medium-text" name="%s_settings[page_set]" id="%s_page_set" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page set.</p>',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_set'] ?? '',
-                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   get_option(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['page_set'] ?? '',
+                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
                  );
 		}
     	/**
@@ -348,10 +348,10 @@ if ( ! class_exists( 'Settings' ) ) {
 			//Choose any one from input, textarea, select or checkbox
 			
 			printf('<input type="text" class="medium-text" name="%s_settings[page_name]" id="%s_page_name" value="%s" placeholder="%s" required /><p class="description" id="tagline-description">The merchant account configured hosted page\'s page name.</p>',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['page_name'] ?? '',
-                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_TEXT_DOMAIN )
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   get_option(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['page_name'] ?? '',
+                   __( 'Enter Value',  WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
                  );
 		}
     	/**
@@ -361,12 +361,12 @@ if ( ! class_exists( 'Settings' ) ) {
 		public function settings_field_test_mode() {
 
 			//Choose any one from input, textarea, select or checkbox
-			$opt = get_option(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_settings')['test_mode'] ?? false;
+			$opt = get_option(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['test_mode'] ?? false;
 			printf('<input type="checkbox" name="%s_settings[test_mode]" id="%s_settings_test_mode" value="true" %s><label for="%s_settings_test_mode"></label><p class="description" id="tagline-description">Enable test mode?</p>',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    $opt  ? 'checked' : '',
-                   WP_FAC_HOSTED_PAGE_TEXT_DOMAIN
+                   WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN
                  );
 		}
     

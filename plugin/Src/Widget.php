@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Src;
+namespace WPFac\HostedPage\Button\Src;
 
 use WP_WIDGET as WP_WIDGET;
 
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Widget class
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Widget' ) ) {
 

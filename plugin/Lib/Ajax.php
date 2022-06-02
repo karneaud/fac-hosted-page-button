@@ -1,12 +1,12 @@
 <?php
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 /**
  * Doing AJAX the WordPress way.
  * Use this class in admin or user side
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 

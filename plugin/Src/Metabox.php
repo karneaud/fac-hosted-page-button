@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Src;
+namespace WPFac\HostedPage\Button\Src;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Build a sample metabox in editor screen
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Metabox' ) ) {
 

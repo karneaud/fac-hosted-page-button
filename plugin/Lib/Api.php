@@ -1,12 +1,12 @@
 <?php
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 /**
  * Implimentation of WordPress inbuilt API class
  *
  * Usage:
  *
- * $api = new WP_FAC_HOSTED_PAGE_API();
+ * $api = new WP_FAC_HOSTED_PAGE_BUTTON_API();
  * $api->endpoint = 'endpoint_url'
  * $api->header = array( "key: $val" )
  * $api->data_type = 'xml' or 'json'
@@ -15,7 +15,7 @@ namespace WPFac\HostedPage\Lib;
  * $data = $api->parse();
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Api' ) ) {
 
