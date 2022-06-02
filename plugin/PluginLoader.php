@@ -387,7 +387,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
     	
     		$rules = get_option( 'rewrite_rules' );
 
-    		if ( ! isset( $rules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] ) ) {
+    		if ( ! isset( $rules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9A-Za-z\-\_]{1,})/?'] ) ) {
         		global $wp_rewrite;
         		$wp_rewrite->flush_rules();
     		}
@@ -396,7 +396,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function insert_rewrite_rules($rules) 
     	{
         	$newrules = array();
-    		$newrules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] = 'index.php?pagename='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'&transaction_id=$matches[1]';
+    		$newrules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9A-Za-z\-\_]{1,})/?'] = 'index.php?pagename='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'&transaction_id=$matches[1]';
     		return $newrules + $rules;
     	}
 
