@@ -813,17 +813,17 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.11.1",
-            "version_normalized": "1.11.1.0",
+            "version": "1.11.2",
+            "version_normalized": "1.11.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc"
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/887734d9c515ad9a564f6581a682fff87a6253cc",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc",
+                "url": "https://api.github.com/repos/php-http/message/zipball/295c82867d07261f2fa4b3a26677519fc6f7f5f6",
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6",
                 "shasum": ""
             },
             "require": {
@@ -849,7 +849,7 @@
                 "laminas/laminas-diactoros": "Used with Diactoros Factories",
                 "slim/slim": "Used with Slim Framework PSR-7 implementation"
             },
-            "time": "2021-05-24T18:11:08+00:00",
+            "time": "2021-08-03T11:52:11+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -884,7 +884,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/message/issues",
-                "source": "https://github.com/php-http/message/tree/1.11.1"
+                "source": "https://github.com/php-http/message/tree/1.11.2"
             },
             "install-path": "../php-http/message"
         },
@@ -1223,17 +1223,17 @@
         },
         {
             "name": "shamarkellman/omnipay-first-atlantic-commerce",
-            "version": "v1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "dev-develop",
+            "version_normalized": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ShamarKellman/omnipay-first-atlantic-commerce.git",
-                "reference": "d79b02895b5f944e9e8ff5491253a3827f439246"
+                "url": "https://github.com/karneaud/omnipay-first-atlantic-commerce-1.git",
+                "reference": "ae309f8c2d2ef9f06bc004da2736aad16cbf063b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ShamarKellman/omnipay-first-atlantic-commerce/zipball/d79b02895b5f944e9e8ff5491253a3827f439246",
-                "reference": "d79b02895b5f944e9e8ff5491253a3827f439246",
+                "url": "https://api.github.com/repos/karneaud/omnipay-first-atlantic-commerce-1/zipball/ae309f8c2d2ef9f06bc004da2736aad16cbf063b",
+                "reference": "ae309f8c2d2ef9f06bc004da2736aad16cbf063b",
                 "shasum": ""
             },
             "require": {
@@ -1247,7 +1247,7 @@
                 "friendsofphp/php-cs-fixer": "^2.17",
                 "omnipay/tests": "^3.1"
             },
-            "time": "2021-03-10T16:54:43+00:00",
+            "time": "2021-08-06T02:28:47+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1255,7 +1255,22 @@
                     "Omnipay\\FirstAtlanticCommerce\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Omnipay\\FirstAtlanticCommerce\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ],
+                "format": [
+                    "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1273,17 +1288,16 @@
                 "shamarkellman"
             ],
             "support": {
-                "issues": "https://github.com/ShamarKellman/omnipay-first-atlantic-commerce/issues",
-                "source": "https://github.com/ShamarKellman/omnipay-first-atlantic-commerce/tree/v1.0.2"
+                "source": "https://github.com/karneaud/omnipay-first-atlantic-commerce-1/tree/develop"
             },
             "funding": [
                 {
-                    "url": "https://skellman.com",
-                    "type": "custom"
+                    "type": "github",
+                    "url": "https://github.com/shamarkellman"
                 },
                 {
-                    "url": "https://github.com/shamarkellman",
-                    "type": "github"
+                    "type": "custom",
+                    "url": "https://skellman.com"
                 }
             ],
             "install-path": "../shamarkellman/omnipay-first-atlantic-commerce"
@@ -1360,24 +1374,24 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.3.3",
-            "version_normalized": "5.3.3.0",
+            "version": "v5.3.6",
+            "version_normalized": "5.3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "0e45ab1574caa0460d9190871a8ce47539e40ccf"
+                "reference": "a8388f7b7054a7401997008ce9cd8c6b0ab7ac75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/0e45ab1574caa0460d9190871a8ce47539e40ccf",
-                "reference": "0e45ab1574caa0460d9190871a8ce47539e40ccf",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a8388f7b7054a7401997008ce9cd8c6b0ab7ac75",
+                "reference": "a8388f7b7054a7401997008ce9cd8c6b0ab7ac75",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/deprecation-contracts": "^2.1",
                 "symfony/polyfill-mbstring": "~1.1",
-                "symfony/polyfill-php80": "^1.15"
+                "symfony/polyfill-php80": "^1.16"
             },
             "require-dev": {
                 "predis/predis": "~1.0",
@@ -1388,7 +1402,7 @@
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
             },
-            "time": "2021-06-27T09:19:40+00:00",
+            "time": "2021-07-27T17:08:17+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1416,7 +1430,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v5.3.3"
+                "source": "https://github.com/symfony/http-foundation/tree/v5.3.6"
             },
             "funding": [
                 {
@@ -1436,17 +1450,17 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.23.0",
-            "version_normalized": "1.23.0.0",
+            "version": "v1.23.1",
+            "version_normalized": "1.23.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1"
+                "reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
-                "reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/9174a3d80210dca8daa7f31fec659150bbeabfc6",
+                "reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6",
                 "shasum": ""
             },
             "require": {
@@ -1455,7 +1469,7 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
-            "time": "2021-05-27T09:27:20+00:00",
+            "time": "2021-05-27T12:26:48+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1499,7 +1513,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.1"
             },
             "funding": [
                 {
@@ -1519,23 +1533,23 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.23.0",
-            "version_normalized": "1.23.0.0",
+            "version": "v1.23.1",
+            "version_normalized": "1.23.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0"
+                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/eca0bf41ed421bed1b57c4958bab16aa86b757d0",
-                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2021-02-19T12:13:01+00:00",
+            "time": "2021-07-28T13:41:28+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1585,7 +1599,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
             },
             "funding": [
                 {
