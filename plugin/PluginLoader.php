@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage;
+namespace WPFac\HostedPage\Button;
 
 use WPFac\HostedPage\Button\Src\Install as Install;
 use WPFac\HostedPage\Button\Src\Cpt as Cpt;
@@ -139,7 +139,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function page_install() {
         	if(!get_page_by_path( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, ARRAY_A, 'page' ))
         		wp_insert_post([
-            		'post_title'=>'WP FAC Hosted Page Button', 
+            		'post_title'=>'WP FAC Hosted Page Button Thank You Page', 
   					'post_type'=> 'page', 
                 	'post_status' => 'publish',
   					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_page]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ),
