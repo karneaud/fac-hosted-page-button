@@ -1,6 +1,6 @@
 <?php
 /**
- Plugin Name: WP FAC Hosted Page Button WordPress Plugin
+ Plugin Name: WP FAC Hosted Page Button
  Plugin URI: https://github.com/nirjharlo/wp-plugin-framework/
  Description: Custom FAC hosted pages button plugin for Wordpress
  Version: 1.0.0
