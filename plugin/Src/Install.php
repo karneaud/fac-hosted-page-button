@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Implimentation of WordPress inbuilt functions for plugin activation.
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! class_exists( 'Install' ) ) {
 
@@ -56,8 +56,8 @@ if ( ! class_exists( 'Install' ) ) {
 			$locale = apply_filters('plugin_locale', $locale, $this->text_domain);
 
 			unload_textdomain($this->text_domain);
-			load_textdomain($this->text_domain, WP_FAC_HOSTED_PAGE_BUTTON_LN . 'textdomain-' . $locale . '.mo');
-			load_plugin_textdomain( $this->text_domain, false, WP_FAC_HOSTED_PAGE_BUTTON_LN );
+			load_textdomain($this->text_domain, FAC_HOSTED_PAGE_BUTTON_LN . 'textdomain-' . $locale . '.mo');
+			load_plugin_textdomain( $this->text_domain, false, FAC_HOSTED_PAGE_BUTTON_LN );
 		}
 
 
@@ -96,7 +96,7 @@ if ( ! class_exists( 'Install' ) ) {
 			if ($this->plugin_page_links) {
 				static $this_plugin;
 				if ( ! $this_plugin ) {
-					$this_plugin = WP_FAC_HOSTED_PAGE_BUTTON_FILE;
+					$this_plugin = FAC_HOSTED_PAGE_BUTTON_FILE;
 				}
 				if ( $file == $this_plugin ) {
 					$shift_link = array();

@@ -1,4 +1,4 @@
-# FAC WP Hosted Page Button
+# FAC Hosted Page Button
 
 Custom plugin for FAC Hosted Pages. Creates a payment button and a custom result page. The plugin is based off of [WP Plugin Framework](https://github.com/nirjharlo/wp-plugin-framework) 
 
@@ -17,9 +17,9 @@ Go through the files in `/lib/class-` and `/src/class-`. First one contains clas
 
 You would need to implement the following actions and implement action handlers 
 
-- `do_action('wp-fac-hosted-page_button_after_page_error', string $transaction_id )` - handle this event after displaying an error on hosted page result page
-- `do_action('wp-fac-hosted-page_button_after_page_success', string $transaction_id )` - handle this event after displaying results on hosted page result page
-- ` do_action('wp-fac-hosted-page_button_display_payment_button', array $payment_ifo )` - trigger this event to display a FAC payment link button for payment info
+- `do_action('fac-hosted-page_button_after_page_error', string $transaction_id )` - handle this event after displaying an error on hosted page result page
+- `do_action('fac-hosted-page_button_after_page_success', string $transaction_id )` - handle this event after displaying results on hosted page result page
+- ` do_action('fac-hosted-page_button_display_payment_button', array $payment_ifo )` - trigger this event to display a FAC payment link button for payment info
 
 `/plugin/functions.php` :: Custom helper functions and constants
 `/plugin/PluginLoader.php` :: `PluginLoader` class to initialize plugin

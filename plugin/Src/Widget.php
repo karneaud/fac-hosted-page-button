@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Widget class
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! class_exists( 'Widget' ) ) {
 

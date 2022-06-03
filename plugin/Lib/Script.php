@@ -5,7 +5,7 @@ namespace WPFac\HostedPage\Button\Lib;
  * Add scripts to the plugin. CSS and JS.
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -55,10 +55,10 @@ if ( ! class_exists( 'Script' ) ) {
 			// Set condition to add script
 			// if ( ! isset( $_GET['page'] ) || $_GET['page'] != 'pageName' ) return;
 
-			wp_enqueue_script( 'jsName', WP_FAC_HOSTED_PAGE_BUTTON_JS . 'ui.js', array() );
+			wp_enqueue_script( 'jsName', FAC_HOSTED_PAGE_BUTTON_JS . 'ui.js', array() );
 			wp_localize_script( 'jsName', 'ajax', array( 'ajax_url' => admin_url('admin-ajax.php') ) );
 
-			wp_enqueue_style( 'cssName', WP_FAC_HOSTED_PAGE_BUTTON_CSS . 'css.css' );
+			wp_enqueue_style( 'cssName', FAC_HOSTED_PAGE_BUTTON_CSS . 'css.css' );
 		}
 
 
@@ -69,10 +69,10 @@ if ( ! class_exists( 'Script' ) ) {
 		 */
 		public function frontend_scripts() {
 
-			wp_enqueue_script( 'jsName', WP_FAC_HOSTED_PAGE_BUTTON_JS . 'ui.js', array() );
+			wp_enqueue_script( 'jsName', FAC_HOSTED_PAGE_BUTTON_JS . 'ui.js', array() );
 			wp_localize_script( 'jsName', 'ajax', array( 'ajax_url' => admin_url('admin-ajax.php') ) );
 
-			wp_enqueue_style( 'cssName', WP_FAC_HOSTED_PAGE_BUTTON_CSS . 'css.css' );
+			wp_enqueue_style( 'cssName', FAC_HOSTED_PAGE_BUTTON_CSS . 'css.css' );
 		}
 	}
 } ?>
