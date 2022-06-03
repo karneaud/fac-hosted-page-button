@@ -55,3 +55,4 @@ You will need to add hooks for executing additional events
 * `do_action('wp-fac-hosted-page_button_after_page_error', string $transaction_id );` 
 * `do_action('wp-fac-hosted-page_button_after_page_success', string $transaction_id );` 
 * A default results page and url is created  on install
+* Recommend flushing permalinks settings to enable plugin's return response url directives
