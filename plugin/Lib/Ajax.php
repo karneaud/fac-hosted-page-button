@@ -6,7 +6,7 @@ namespace WPFac\HostedPage\Button\Lib;
  * Use this class in admin or user side
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 

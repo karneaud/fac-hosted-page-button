@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * This class depends on WP pagenavi plugin: https://wordpress.org/plugins/wp-pagenavi/
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! class_exists( 'Query' ) ) {
 

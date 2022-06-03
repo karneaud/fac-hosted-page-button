@@ -6,7 +6,7 @@ namespace WPFac\HostedPage\Button\Lib;
  *
  * Usage:
  *
- * $api = new WP_FAC_HOSTED_PAGE_BUTTON_API();
+ * $api = new FAC_HOSTED_PAGE_BUTTON_API();
  * $api->endpoint = 'endpoint_url'
  * $api->header = array( "key: $val" )
  * $api->data_type = 'xml' or 'json'
@@ -15,7 +15,7 @@ namespace WPFac\HostedPage\Button\Lib;
  * $data = $api->parse();
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page-button
+ * @package    fac-hosted-page-button
  */
 if ( ! class_exists( 'Api' ) ) {
 
