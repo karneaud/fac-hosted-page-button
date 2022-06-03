@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Src;
+namespace WPFac\HostedPage\Button\Src;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * This class depends on WP pagenavi plugin: https://wordpress.org/plugins/wp-pagenavi/
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Query' ) ) {
 

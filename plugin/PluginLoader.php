@@ -1,17 +1,17 @@
 <?php
-namespace WPFac\HostedPage;
+namespace WPFac\HostedPage\Button;
 
-use WPFac\HostedPage\Src\Install as Install;
-use WPFac\HostedPage\Src\Cpt as Cpt;
-use WPFac\HostedPage\Src\Db as Db;
-use WPFac\HostedPage\Src\Settings as Settings;
-use WPFac\HostedPage\Src\Widget as Widget;
-use WPFac\HostedPage\Src\Metabox as Metabox;
-use WPFac\HostedPage\Src\Shortcode as Shortcode;
-use WPFac\HostedPage\Src\RestApi as RestApi;
-use WPFac\HostedPage\Lib\Fac as FacHostedPage;
-use WPFac\HostedPage\Lib\Cron as Cron;
-use WPFac\HostedPage\Lib\Script as Script;
+use WPFac\HostedPage\Button\Src\Install as Install;
+use WPFac\HostedPage\Button\Src\Cpt as Cpt;
+use WPFac\HostedPage\Button\Src\Db as Db;
+use WPFac\HostedPage\Button\Src\Settings as Settings;
+use WPFac\HostedPage\Button\Src\Widget as Widget;
+use WPFac\HostedPage\Button\Src\Metabox as Metabox;
+use WPFac\HostedPage\Button\Src\Shortcode as Shortcode;
+use WPFac\HostedPage\Button\Src\RestApi as RestApi;
+use WPFac\HostedPage\Button\Lib\Fac as FacHostedPage;
+use WPFac\HostedPage\Button\Lib\Cron as Cron;
+use WPFac\HostedPage\Button\Lib\Script as Script;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Follow: https://codex.wordpress.org/Plugin_API for details
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'PluginLoader' ) ) {
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * Plugin Instance.
 		 *
-		 * @var WP_FAC_HOSTED_PAGE_BUILD the PLUGIN Instance
+		 * @var WP_FAC_HOSTED_PAGE_BUTTON_BUILD the PLUGIN Instance
 		 */
 		protected static $_instance;
 
@@ -45,7 +45,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $text_domain = WP_FAC_HOSTED_PAGE_TEXT_DOMAIN;
+		protected static $text_domain = WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN;
 
 
 		/**
@@ -61,7 +61,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $plugin_table = WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "_table";
+		protected static $plugin_table = WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . "_table";
 
 
 		/**
@@ -71,7 +71,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		protected static $plugin_page_links = array(
 			array(
-				'slug' => 'options-general.php?page='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'_settings'  ,
+				'slug' => 'options-general.php?page='. WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings'  ,
 				'label' => 'Settings'
 			) );
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * Main Plugin Instance.
 		 *
-		 * @return WP_FAC_HOSTED_PAGE_BUILD
+		 * @return WP_FAC_HOSTED_PAGE_BUTTON_BUILD
 		 */
 		public static function instance() {
 
@@ -99,7 +99,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function installation() {
 
-			if (class_exists('WPFac\\HostedPage\\Src\\Install')) {
+			if (class_exists('WPFac\\HostedPage\\Button\\Src\\Install')) {
 
 				$install = new Install();
 				$install->text_domain = self::$text_domain;
@@ -109,7 +109,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 			}
 
 			// If CPT exists, include taht and flush the rewrite rules
-			// if ( class_exists( 'WPFac\\HostedPage\\Src\\Cpt' ) ) new Cpt();
+			// if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Cpt' ) ) new Cpt();
 			// flush_rewrite_rules();
 		}
 
@@ -121,13 +121,13 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function cron_activation() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Lib\\Cron' ) ) {
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Lib\\Cron' ) ) {
 
 				$cron = new Cron();
 				$schedule = $cron->schedule_task(
 							array(
 							'timestamp' => current_time('timestamp'),
-							//'schedule' can be 'hourly', 'daily', 'weekly' or anything custom as defined in WP_FAC_HOSTED_PAGE_CRON
+							//'schedule' can be 'hourly', 'daily', 'weekly' or anything custom as defined in WP_FAC_HOSTED_PAGE_BUTTON_CRON
 							'recurrence' => 'schedule',
 							// Use custom_corn_hook to hook into any cron process, anywhere in the plugin.
 							'hook' => 'custom_cron_hook'
@@ -137,19 +137,19 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		}
     
 		public function page_install() {
-        	if(!get_page_by_path( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, ARRAY_A, 'page' ))
+        	if(!get_page_by_path( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, ARRAY_A, 'page' ))
         		wp_insert_post([
-            		'post_title'=>'FAC Hosted Page', 
+            		'post_title'=>'WP FAC Hosted Page Button Thank You Page', 
   					'post_type'=> 'page', 
                 	'post_status' => 'publish',
-  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_page]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_TEXT_DOMAIN ),
-            		'post_name' => WP_FAC_HOSTED_PAGE_TEXT_DOMAIN
+  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_page]<!-- /wp:shortcode -->', WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ),
+            		'post_name' => WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN
             	]);
         	
         }
     
     	public function page_uninstall() {
-        	if(($page = get_page_by_path( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN, OBJECT, 'page' )) )
+        	if(($page = get_page_by_path( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, OBJECT, 'page' )) )
             	wp_delete_post( $page->ID, true);
         }
 
@@ -160,7 +160,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function db_install() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Db' ) ) {
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Db' ) ) {
 
 				$db = new Db();
 				$db->table = self::$plugin_table;
@@ -258,7 +258,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function cpt() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Cpt' ) ) new Cpt();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Cpt' ) ) new Cpt();
 		}
 
 
@@ -269,7 +269,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function scripts() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Lib\\Script' ) ) new Script();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Lib\\Script' ) ) new Script();
 		}
 
 
@@ -280,7 +280,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function settings() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Settings' ) ) new Settings();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Settings' ) ) new Settings();
 		}
 
 
@@ -291,7 +291,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function widgets() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Widget' ) ) new Widget();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Widget' ) ) new Widget();
 		}
 
 
@@ -302,7 +302,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function metabox() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Metabox' ) ) new Metabox();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Metabox' ) ) new Metabox();
 		}
 
 
@@ -313,7 +313,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		public function shortcode() {
 
-			if ( class_exists( 'WPFac\\HostedPage\\Src\\Shortcode' ) ) new Shortcode();
+			if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Shortcode' ) ) new Shortcode();
 		}
 
 
@@ -324,7 +324,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 */
 		 public function rest_api() {
 
-			 if ( class_exists( 'WPFac\\HostedPage\\Src\\RestApi' ) ) new RestApi();
+			 if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\RestApi' ) ) new RestApi();
 		 }
 
 
@@ -360,17 +360,17 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 * @return Void
 		 */
 		public function init() {
-			//register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'db_install' ) );
-			//register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'cron_activation' ) );
-			register_activation_hook( WP_FAC_HOSTED_PAGE_FILE, array( $this, 'page_install' ) );
+			//register_activation_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'db_install' ) );
+			//register_activation_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'cron_activation' ) );
+			register_activation_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'page_install' ) );
 			//remove the DB and CORN upon uninstallation
 			//using $this won't work here.
-			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'db_uninstall' ) );
-			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'cron_uninstall' ) );
-			register_uninstall_hook( WP_FAC_HOSTED_PAGE_FILE, array( 'WPFac\\HostedPage\\PluginLoader', 'page_uninstall' ) );
+			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'db_uninstall' ) );
+			//register_uninstall_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'cron_uninstall' ) );
+			register_uninstall_hook( WP_FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'page_uninstall' ) );
 			//add_filter( 'rest_authentication_errors', array( $this, 'prevent_unauthorized_rest_access' ) );
 			add_action( 'init', array( $this, 'installation' ) );
-			add_action( WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '_display_payment_button', 'wp_fac_hosted_page_display_payment_button', 10, 1);
+			add_action( WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_display_payment_button', 'wp_fac_hosted_page_button_display_payment_button', 10, 1);
         	add_filter( 'rewrite_rules_array',[ $this, 'insert_rewrite_rules'] );
 			add_filter( 'query_vars',[ $this, 'insert_query_vars'] );
 			$this->custom_cron_hook_cb();
@@ -387,7 +387,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
     	
     		$rules = get_option( 'rewrite_rules' );
 
-    		if ( ! isset( $rules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] ) ) {
+    		if ( ! isset( $rules[ WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '/response/([0-9A-Za-z\-\_]{1,})/?'] ) ) {
         		global $wp_rewrite;
         		$wp_rewrite->flush_rules();
     		}
@@ -396,7 +396,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function insert_rewrite_rules($rules) 
     	{
         	$newrules = array();
-    		$newrules[ WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . '/response/([0-9]{1,})/?'] = 'index.php?pagename='. WP_FAC_HOSTED_PAGE_TEXT_DOMAIN .'&transaction_id=$matches[1]';
+    		$newrules[ WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '/response/([0-9A-Za-z\-\_]{1,})/?'] = 'index.php?pagename='. WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'&transaction_id=$matches[1]';
     		return $newrules + $rules;
     	}
 

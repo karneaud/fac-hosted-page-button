@@ -1,5 +1,5 @@
 {
-    "name": "fac/wp-hosted-page",
+    "name": "karneaud/wp-fac-hosted-page-button",
     "type": "wordpress-plugin",
     "description": "Custom hosted page Wordpress plugin for FAC. Based on WP Plugin Framework by Nirjhar Lo",
     "keywords": ["wordpress","framework"],
@@ -25,7 +25,7 @@
         "guzzlehttp/guzzle": "^7.3"
     },
   	"autoload": {
-          "psr-4": {"WPFac\\HostedPage\\": "./plugin"}
+          "psr-4": {"WPFac\\HostedPage\\Button\\": "./plugin"}
       }
 
 }

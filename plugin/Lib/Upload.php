@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Plugin upload for WordPress front end or backend
  *
  * @author     Kendall Arneaud
- * @package    wp-fac-hosted-page
+ * @package    wp-fac-hosted-page-button
  */
 if ( ! class_exists( 'Upload' ) ) {
 

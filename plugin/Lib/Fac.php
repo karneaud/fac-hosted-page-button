@@ -1,6 +1,6 @@
 <?php
 
-namespace WPFac\HostedPage\Lib;
+namespace WPFac\HostedPage\Button\Lib;
 
 use Omnipay\Omnipay;
 use Omnipay\Common\Exception\InvalidRequestException;

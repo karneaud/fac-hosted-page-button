@@ -1,5 +1,5 @@
 <?php
-namespace WPFac\HostedPage\Src;
+namespace WPFac\HostedPage\Button\Src;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -20,10 +20,10 @@ class Templating
     {
     	if(!get_template_part($slug, $name, $args )) 
         {
-        	if( !get_template_part(WP_FAC_HOSTED_PAGE_TEXT_DOMAIN . "/{$slug}", $name, $args ) ) 
+        	if( !get_template_part(WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . "/{$slug}", $name, $args ) ) 
             {
             	extract($args, EXTR_SKIP);
-            	require_once sprintf("%s/%s.php", WP_FAC_HOSTED_PAGE_TEMPLATE , (empty($name)? $slug : "{$slug}-{$name}") ) ;
+            	require_once sprintf("%s/%s.php", WP_FAC_HOSTED_PAGE_BUTTON_TEMPLATE , (empty($name)? $slug : "{$slug}-{$name}") ) ;
             }
         }
     }
