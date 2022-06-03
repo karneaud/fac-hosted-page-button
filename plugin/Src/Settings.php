@@ -92,7 +92,7 @@ if ( ! class_exists( 'Settings' ) ) {
 			add_action( 'admin_init', array( $this, 'add_settings' ) );
         	add_action( 'admin_menu', array( $this, 'menu_page' ) );
 			add_filter( 'set-screen-option', array( $this, 'set_screen' ), 10, 3 );
-        	// add_filter( 'plugin_action_links_fac-hosted-page/wp-plugin-framework.php' ,[ $this, 'register_settings_link'] );
+        	// add_filter( 'plugin_action_links_' . WP_FAC_HOSTED_PAGE_BUTTON_FILE ,[ $this, 'register_settings_link'] );
             /*
 			add_action( 'admin_menu', array( $this, 'sub_menu_page' ) );
 			 *
@@ -129,7 +129,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		$url = esc_url( add_query_arg(
 			'page',
 			'menu_page_callback',
-			 get_admin_url() . 'admin.php'
+			  get_admin_url() . "options-general.php?page=" . WP_FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings'
 		) );
 		// Create the link.
 		$settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
