@@ -48,6 +48,16 @@ A custom wordpress plugin developed to facilitate online CC payments using First
 
 Either embed the payment button shortcode into a page/post or call the helper function with parameters in template code. 
 
+== Screenshots ==
+1. Use shortcode in page 
+2. Payment Button
+3. Default Thank You Page
+4. Successful Thank You Page
+  
+== Changelog ==
+= 1.0.0-beta =
+* Plugin released. 
+
 == Notes ==
 
 You will need to add hooks for executing additional events
