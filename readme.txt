@@ -28,7 +28,6 @@ A custom wordpress plugin developed to facilitate online CC payments using First
     - part-payment.button.error.php
     - part-payment.button.php
 * Custom actions hooks
-    - fac-hosted-page_button_display_payment_button
     - fac-hosted-page_button_after_page_error
     - fac-hosted-page_button_after_page_success
     - fac-hosted-page_button_before_payment_button
