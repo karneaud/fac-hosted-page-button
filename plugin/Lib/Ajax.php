@@ -86,7 +86,7 @@ if ( ! class_exists( 'Ajax' ) ) {
 		 */
 		public function custom_name() {
 
-			$val = $_POST['val'];
+			$val = wp_kses($_POST['val']);
 
 			// DO some stuff
 
