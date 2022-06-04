@@ -38,7 +38,7 @@ if ( ! class_exists( 'Upload' ) ) {
 
 			<form method="POST" action="" enctype="multipart/form-data">
 				<input name="UploadFile" type="file" multiple="false"/>
-				<?php submit_button( __( 'Upload', 'stv' ), 'secondary', 'UploadSubmit' ); ?>
+				<?php submit_button( __( 'Upload', 'fac-hosted-page-button' ), 'secondary', 'UploadSubmit' ); ?>
 			</form>
 			<?php
 		}
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Upload' ) ) {
 		public function file_type_error_admin_notice() { ?>
 
 			<div class="notice notice-error is-dismissible">
-				<p><?php _e( 'Please Upload correct type of file only.', 'textdomain' ); ?></p>
+				<p><?php _e( 'Please Upload correct type of file only.', 'fac-hosted-page-button' ); ?></p>
  			</div>
 		<?php
 		}
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Upload' ) ) {
 		public function file_error_admin_notice() { ?>
 
 			<div class="notice notice-error is-dismissible">
-				<p><?php _e( 'File Upload failed.', 'textdomain' ); ?></p>
+				<p><?php _e( 'File Upload failed.', 'fac-hosted-page-button' ); ?></p>
  			</div>
 		<?php
 		}
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Upload' ) ) {
 		public function success_notice() { ?>
 
 			<div class="notice notice-success is-dismissible">
-				<p><?php _e( 'Successfully saved file details.', 'textdomain' ); ?></p>
+				<p><?php _e( 'Successfully saved file details.', 'fac-hosted-page-button' ); ?></p>
  			</div>
 		<?php
 		}

@@ -25,9 +25,9 @@ if ( ! class_exists( 'Widget' ) ) {
 
 			$widget_ops = array(
 							'classname' => 'plugin_widget',
-							'description' => __( 'Plugin widget', 'textdomain' ),
+							'description' => __( 'Plugin widget', 'fac-hosted-page-button' ),
 							);
-			parent::__construct( 'my_widget_id', __( 'Plugin widget', 'textdomain' ), $widget_ops );
+			parent::__construct( 'my_widget_id', __( 'Plugin widget', 'fac-hosted-page-button' ), $widget_ops );
 		}
 
 
@@ -45,7 +45,7 @@ if ( ! class_exists( 'Widget' ) ) {
 			if ( ! empty( $instance['title'] ) ) {
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 			}
-			echo esc_html__( 'Hello, World!', 'textdomain' );
+			echo esc_html__( 'Hello, World!', 'fac-hosted-page-button' );
 			echo $args['after_widget'];
 		}
 
@@ -59,9 +59,9 @@ if ( ! class_exists( 'Widget' ) ) {
 		 */
 		public function form( $instance ) {
 
-			$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Internal Link Master', 'textdomain' ); ?>
+			$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Internal Link Master', 'fac-hosted-page-button' ); ?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'textdomain' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'fac-hosted-page-button' ); ?></label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 		<?php

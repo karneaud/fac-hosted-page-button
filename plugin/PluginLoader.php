@@ -29,7 +29,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * @var String
 		 */
-		protected $version = '1.0.0';
+		protected $version = '1.0.0-beta';
 
 
 		/**
@@ -45,7 +45,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $text_domain = FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN;
+		protected static $text_domain = 'fac-hosted-page-button';
 
 
 		/**
@@ -107,10 +107,6 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 				$install->plugin_page_links = self::$plugin_page_links;
 				$install->execute();
 			}
-
-			// If CPT exists, include taht and flush the rewrite rules
-			// if ( class_exists( 'WPFac\\HostedPage\\Button\\Src\\Cpt' ) ) new Cpt();
-			// flush_rewrite_rules();
 		}
 
 
@@ -191,7 +187,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function db_error_msg() { ?>
 
 			<div class="notice notice-error is-dismissible">
-				<p><?php _e( 'Database table Not installed correctly.', 'textdomain' ); ?></p>
+				<p><?php _e( 'Database table Not installed correctly.', 'fac-hosted-page-button' ); ?></p>
  			</div>
 			<?php
 		}
@@ -360,27 +356,15 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 * @return Void
 		 */
 		public function init() {
-			//register_activation_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'db_install' ) );
-			//register_activation_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'cron_activation' ) );
 			register_activation_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( $this, 'page_install' ) );
-			//remove the DB and CORN upon uninstallation
-			//using $this won't work here.
-			//register_uninstall_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'db_uninstall' ) );
-			//register_uninstall_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'cron_uninstall' ) );
 			register_uninstall_hook( FAC_HOSTED_PAGE_BUTTON_FILE, array( 'WPFac\\HostedPage\\Button\\PluginLoader', 'page_uninstall' ) );
-			//add_filter( 'rest_authentication_errors', array( $this, 'prevent_unauthorized_rest_access' ) );
 			add_action( 'init', array( $this, 'installation' ) );
 			add_action( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_display_payment_button', 'fac_hosted_page_button_display_payment_button', 10, 1);
         	add_filter( 'rewrite_rules_array',[ $this, 'insert_rewrite_rules'] );
 			add_filter( 'query_vars',[ $this, 'insert_query_vars'] );
-			$this->custom_cron_hook_cb();
 			$this->scripts();
-			//$this->widgets();
-			//$this->metabox();
 			$this->shortcode();
 			$this->settings();
-			//Alternative method: add_action( 'rest_api_init', array($this, 'rest_api') );
-			//$this->rest_api();
 		}
     
     	public function rewrite_rules() {

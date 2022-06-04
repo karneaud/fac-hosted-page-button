@@ -39,7 +39,6 @@ if ( ! class_exists( 'Api' ) ) {
 		 */
 		public $data_type;
 
-
 		/**
 		 * @var String
 		 */
@@ -62,23 +61,17 @@ if ( ! class_exists( 'Api' ) ) {
 
 		/**
 		 * Define the necessary database tables
-		 *
+		 * @params $params The paramters to build the request
 		 * @return Array
 		 */
-		public function build() {
+		public function build($params) {
 
 			$args = array(
-						CURLOPT_URL => $this->endpoint,
-						CURLOPT_RETURNTRANSFER => true,
-						CURLOPT_ENCODING => "",
-						CURLOPT_MAXREDIRS => 10,
-						CURLOPT_TIMEOUT => 30,
-						CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-						CURLOPT_CUSTOMREQUEST => $this->call_type,
-						CURLOPT_HTTPHEADER => $this->header,
+						'headers' => $this->headers,
+            			'method' => $this->call_type,
 						);
 
-			return $args;
+			return array_merge($args, $params);
 		}
 
 
@@ -87,22 +80,9 @@ if ( ! class_exists( 'Api' ) ) {
 		 *
 		 * @return Array
 		 */
-		public function call() {
-
-			$curl = curl_init();
-
-			curl_setopt_array( $curl, $this->build() );
-
-			$result = curl_exec( $curl );
-			$err = curl_error( $curl );
-
-			curl_close( $curl );
-
-			if ( $err ) {
-				$result = "cURL Error #:" . $err;
-			}
-
-			return $result;
+		public function call($params) {
+			$result = wp_remote_request($this->endpoint, $this->build($params));
+        	return $result;
 		}
 
 

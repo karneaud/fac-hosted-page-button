@@ -76,11 +76,11 @@ if ( ! class_exists( 'Settings' ) ) {
 											'info' => array(
 														array(
 															'id' => 'helpId',
-															'title' => __( 'Title', 'textdomain' ),
-															'content' => __( 'Description', 'textdomain' ),
+															'title' => __( 'Title', 'fac-hosted-page-button' ),
+															'content' => __( 'Description', 'fac-hosted-page-button' ),
 														),
 													),
-											'link' => '<p><a href="#">' . __( 'helpLink', 'textdomain' ) . '</a></p>',
+											'link' => '<p><a href="#">' . __( 'helpLink', 'fac-hosted-page-button' ) . '</a></p>',
 											)
 								)
 							);
@@ -132,7 +132,7 @@ if ( ! class_exists( 'Settings' ) ) {
 			  get_admin_url() . "options-general.php?page=" . FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings'
 		) );
 		// Create the link.
-		$settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
+		$settings_link = "<a href='$url'>" . __( 'Settings' , 'fac-hosted-page-button') . '</a>';
 		// Adds the link to the end of the array.
 		array_push(
 			$links,
@@ -206,7 +206,7 @@ if ( ! class_exists( 'Settings' ) ) {
 
 			$option = 'per_page';
 			$args   = array(
-						'label'   => __( 'Show per page', 'textdomain' ),
+						'label'   => __( 'Show per page', 'fac-hosted-page-button' ),
 						'default' => 10,
 						'option'  => 'option_name_per_page' // Related to FAC_HOSTED_PAGE_BUTTON_TABLE()
 						);
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Settings' ) ) {
 					<form method="post" action="options.php">
 						<?php settings_fields(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings');
 						do_settings_sections(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings');
-						submit_button( __( 'Save Settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN  ), 'primary', 'id' ); ?>
+						submit_button( __( 'Save Settings', 'fac-hosted-page-button'  ), 'primary', 'id' ); ?>
 					</form>
 
 					<?php
@@ -277,13 +277,13 @@ if ( ! class_exists( 'Settings' ) ) {
 		 */
 		public function add_settings() {
 
-			add_settings_section( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', __( 'FAC SETTINGS', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN), array( $this,'section_cb' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+			add_settings_section( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', __( 'FAC SETTINGS','fac-hosted-page-button'), array( $this,'section_cb' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
         	register_setting( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings', [ 'type' => 'array', 'sanitize_callback' => [$this, 'sanitize_settings' ]] );
 			add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_merchant_id', __( 'FAC MERCHANT ID', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_id' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_merchant_secret' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_page_set' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_name', __( 'FAC PAGE NAME', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_page_name' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
-        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_test_mode', __( 'FAC TEST MODE', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ), array( $this, 'settings_field_test_mode' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_merchant_secret', __( 'FAC MERCHANT SECRET', 'fac-hosted-page-button' ), array( $this, 'settings_field_merchant_secret' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_set', __( 'FAC PAGE SET', 'fac-hosted-page-button'), array( $this, 'settings_field_page_set' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page_name', __( 'FAC PAGE NAME', 'fac-hosted-page-button'), array( $this, 'settings_field_page_name' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
+        	add_settings_field( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_test_mode', __( 'FAC TEST MODE', 'fac-hosted-page-button' ), array( $this, 'settings_field_test_mode' ), FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN .'_settings', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings' );
 		}
 		/**
 		 * Section description
@@ -292,7 +292,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		 */
 		public function section_cb() {
 
-			echo '<p class="description">' . __( 'Setup First Atlantic merchant user account configurations', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ) . '</p>';
+			echo '<p class="description">' . __( 'Setup First Atlantic merchant user account configurations', 'fac-hosted-page-button' ) . '</p>';
 		}
 		/**
 		 * The merchant  account id 
@@ -306,7 +306,7 @@ if ( ! class_exists( 'Settings' ) ) {
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    get_option(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['merchant_id'] ?? '123456',
-                   __( 'Enter Value',  FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
+                   __( 'Enter Value',  'fac-hosted-page-button' )
                  );
 		}
     	/**
@@ -321,7 +321,7 @@ if ( ! class_exists( 'Settings' ) ) {
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    get_option(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['merchant_secret'] ?? 'abcdefg',
-                   __( 'Enter Value',  FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
+                   __( 'Enter Value',  'fac-hosted-page-button')
                  );
 		}
     	/**
@@ -336,7 +336,7 @@ if ( ! class_exists( 'Settings' ) ) {
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    get_option(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['page_set'] ?? '',
-                   __( 'Enter Value',  FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
+                   __( 'Enter Value',  'fac-hosted-page-button' )
                  );
 		}
     	/**
@@ -351,7 +351,7 @@ if ( ! class_exists( 'Settings' ) ) {
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, 
                    get_option(FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_settings')['page_name'] ?? '',
-                   __( 'Enter Value',  FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN )
+                   __( 'Enter Value',  'fac-hosted-page-button' )
                  );
 		}
     	/**

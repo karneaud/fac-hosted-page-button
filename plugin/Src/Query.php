@@ -85,7 +85,7 @@ if ( ! class_exists( 'Query' ) ) {
 				'count_total'  => true,
 				'paged'        => $paged,
 				'offset'       => $offset,
-				'search'       => '*' . esc_attr( $_GET['s'] ) . '*',
+				'search'       => '*' . sanitize_text_field( $_GET['s'] ) . '*',
 				'meta_query'   => array( // It supports nested meta query
 					'relation' => 'AND', //or 'OR'
 					array(
@@ -128,7 +128,7 @@ if ( ! class_exists( 'Query' ) ) {
 				'count_total'  => true,
 				'paged'        => $paged,
 				'offset'       => $offset,
-				'search'       => '*' . esc_attr( $_GET['s'] ) . '*',
+				'search'       => '*' . sanitize_text_field( $_GET['s'] ) . '*',
 				'meta_query'   => array( // It supports nested meta query
 					'relation' => 'AND', //or 'OR'
 					array(

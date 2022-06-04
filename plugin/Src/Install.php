@@ -69,9 +69,9 @@ if ( ! class_exists( 'Install' ) ) {
 		public function php_ver_incompatible() {
 
 			if ( version_compare( phpversion(), $this->php_ver_allowed, '<' ) ) :
-				$text = __( 'The Plugin can\'t be activated because your PHP version', 'textdomain' );
-				$text_last = __( 'is less than required '.$this->php_ver_allowed.'. See more information', 'textdomain' );
-				$text_link = 'php.net/eol.php'; ?>
+				$text = esc_html__( 'The Plugin can\'t be activated because your PHP version', 'fac-hosted-page-button' );
+				$text_last = esc_html__( 'is less than required '.$this->php_ver_allowed.'. See more information', 'fac-hosted-page-button' );
+				$text_link = esc_html('php.net/eol.php'); ?>
 
 				<div id="message" class="updated notice notice-success is-dismissible">
 					<p><?php echo $text . ' ' . phpversion() . ' ' . $text_last . ': '; ?>
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Install' ) ) {
 				if ( $file == $this_plugin ) {
 					$shift_link = array();
 					foreach ($this->plugin_page_links as $value) {
-						$shift_link[] = '<a href="'.$value['slug'].'">'.$value['label'].'</a>';
+						$shift_link[] = '<a href="'. esc_attr($value['slug']) .'">'. $value['label'] . '</a>';
 					}
 					foreach( $shift_link as $val ) {
 						array_unshift( $links, $val );
