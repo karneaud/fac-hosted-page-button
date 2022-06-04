@@ -187,7 +187,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function db_error_msg() { ?>
 
 			<div class="notice notice-error is-dismissible">
-				<p><?php _e( 'Database table Not installed correctly.', 'textdomain' ); ?></p>
+				<p><?php _e( 'Database table Not installed correctly.', 'fac-hosted-page-button' ); ?></p>
  			</div>
 			<?php
 		}

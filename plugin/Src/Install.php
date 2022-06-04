@@ -69,8 +69,8 @@ if ( ! class_exists( 'Install' ) ) {
 		public function php_ver_incompatible() {
 
 			if ( version_compare( phpversion(), $this->php_ver_allowed, '<' ) ) :
-				$text = esc_html__( 'The Plugin can\'t be activated because your PHP version', 'textdomain' );
-				$text_last = esc_html__( 'is less than required '.$this->php_ver_allowed.'. See more information', 'textdomain' );
+				$text = esc_html__( 'The Plugin can\'t be activated because your PHP version', 'fac-hosted-page-button' );
+				$text_last = esc_html__( 'is less than required '.$this->php_ver_allowed.'. See more information', 'fac-hosted-page-button' );
 				$text_link = esc_html('php.net/eol.php'); ?>
 
 				<div id="message" class="updated notice notice-success is-dismissible">

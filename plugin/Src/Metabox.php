@@ -36,7 +36,7 @@ if ( ! class_exists( 'Metabox' ) ) {
 
 			add_meta_box(
 				'meta-box-id',
-				esc_html__( 'MetaBox Title', 'textdomain' ),
+				esc_html__( 'MetaBox Title', 'fac-hosted-page-button' ),
 				array( $this, 'render' ),
 				// Declare the post type to show meta box
 				'post_type',
@@ -56,7 +56,7 @@ if ( ! class_exists( 'Metabox' ) ) {
 			wp_nonce_field( basename( __FILE__ ), 'metabox_name_nonce' ); ?>
 
 			<p>
-				<label for="metabox_name"><?php _e( "Custom Text", 'textdomain' ); ?></label>
+				<label for="metabox_name"><?php _e( "Custom Text", 'fac-hosted-page-button' ); ?></label>
     			<br />
     			<input class="widefat" type="text" name="metabox_field_name" id="metabox_field_name" value="<?php echo esc_attr( get_post_meta( $object->ID, 'metabox_name', true ) ); ?>" />
   			</p>

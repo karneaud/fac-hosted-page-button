@@ -57,19 +57,19 @@ if ( ! class_exists( 'Cpt' ) ) {
 		public function labels() {
 
 	      $labels = array(
-	        'name'                => _x( '', 'Post Type General Name', 'textdomain' ),
-	        'singular_name'       => _x( '', 'Post Type Singular Name', 'textdomain' ),
-	        'menu_name'           => __( '', 'textdomain' ),
-	        'parent_item_colon'   => __( '', 'textdomain' ),
-	        'all_items'           => __( '', 'textdomain' ),
-	        'view_item'           => __( '', 'textdomain' ),
-	        'add_new_item'        => __( '', 'textdomain' ),
-	        'add_new'             => __( '', 'textdomain' ),
-	        'edit_item'           => __( '', 'textdomain' ),
-	        'update_item'         => __( '', 'textdomain' ),
-	        'search_items'        => __( '', 'textdomain' ),
-	        'not_found'           => __( '', 'textdomain' ),
-	        'not_found_in_trash'  => __( '', 'textdomain' ),
+	        'name'                => _x( '', 'Post Type General Name', 'fac-hosted-page-button' ),
+	        'singular_name'       => _x( '', 'Post Type Singular Name', 'fac-hosted-page-button' ),
+	        'menu_name'           => __( '', 'fac-hosted-page-button' ),
+	        'parent_item_colon'   => __( '', 'fac-hosted-page-button' ),
+	        'all_items'           => __( '', 'fac-hosted-page-button' ),
+	        'view_item'           => __( '', 'fac-hosted-page-button' ),
+	        'add_new_item'        => __( '', 'fac-hosted-page-button' ),
+	        'add_new'             => __( '', 'fac-hosted-page-button' ),
+	        'edit_item'           => __( '', 'fac-hosted-page-button' ),
+	        'update_item'         => __( '', 'fac-hosted-page-button' ),
+	        'search_items'        => __( '', 'fac-hosted-page-button' ),
+	        'not_found'           => __( '', 'fac-hosted-page-button' ),
+	        'not_found_in_trash'  => __( '', 'fac-hosted-page-button' ),
 	      );
 
 	      return $labels;
@@ -86,8 +86,8 @@ if ( ! class_exists( 'Cpt' ) ) {
 	    public function args( $labels ) {
 
 	      $args = array(
-	          'label'               => __( '', 'textdomain' ),
-	          'description'         => __( '', 'textdomain' ),
+	          'label'               => __( '', 'fac-hosted-page-button' ),
+	          'description'         => __( '', 'fac-hosted-page-button' ),
 	          'labels'              => $labels,
 	          'supports'            => array( 'title', 'editor', 'thumbnail' ),
 	          'taxonomies'          => array( 'custom_tax', 'post_tag' ),
@@ -127,16 +127,16 @@ if ( ! class_exists( 'Cpt' ) ) {
 
 			 $messages['cpt_name'] = array(
 				 0 => '',
-				 1 => sprintf( __( 'CPT updated. <a href="%s">View CPT</a>', 'textdomain' ), esc_url( get_permalink( $post_ID ) ) ),
-				 2 => __( 'field updated.', 'textdomain' ),
-				 3 => __( 'field deleted.', 'textdomain' ),
-				 4 => __( 'CPT updated.', 'textdomain' ),
-				 5 => ( isset( $_GET['revision'] ) ? sprintf( __( 'CPT restored to revision from %s', 'textdomain' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false ),
-				 6 => sprintf( __( 'CPT published. <a href="%s">View Cpt</a>', 'textdomain' ), esc_url( get_permalink( $post_ID ) ) ),
-				 7 => __( 'CPT saved.', 'textdomain' ),
-				 8 => sprintf( __( 'CPT submitted. <a target="_blank" href="%s">Preview cpt</a>', 'textdomain' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
-				 9 => sprintf( __( 'CPT scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview cpt</a>', 'textdomain' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
-				 10 => sprintf( __( 'CPT draft updated. <a target="_blank" href="%s">Preview cpt</a>', 'textdomain' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+				 1 => sprintf( __( 'CPT updated. <a href="%s">View CPT</a>', 'fac-hosted-page-button' ), esc_url( get_permalink( $post_ID ) ) ),
+				 2 => __( 'field updated.', 'fac-hosted-page-button' ),
+				 3 => __( 'field deleted.', 'fac-hosted-page-button' ),
+				 4 => __( 'CPT updated.', 'fac-hosted-page-button' ),
+				 5 => ( isset( $_GET['revision'] ) ? sprintf( __( 'CPT restored to revision from %s', 'fac-hosted-page-button' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false ),
+				 6 => sprintf( __( 'CPT published. <a href="%s">View Cpt</a>', 'fac-hosted-page-button' ), esc_url( get_permalink( $post_ID ) ) ),
+				 7 => __( 'CPT saved.', 'fac-hosted-page-button' ),
+				 8 => sprintf( __( 'CPT submitted. <a target="_blank" href="%s">Preview cpt</a>', 'fac-hosted-page-button' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+				 9 => sprintf( __( 'CPT scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview cpt</a>', 'fac-hosted-page-button' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
+				 10 => sprintf( __( 'CPT draft updated. <a target="_blank" href="%s">Preview cpt</a>', 'fac-hosted-page-button' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
 			 );
 
 			 return $messages;
@@ -151,17 +151,17 @@ if ( ! class_exists( 'Cpt' ) ) {
 		 public function taxonomy_labels() {
 
 			 $labels = array(
-			     'name'              => _x( 'Taxonomy', 'taxonomy general name', 'textdomain' ),
-			     'singular_name'     => _x( 'Taxonomy', 'taxonomy singular name', 'textdomain' ),
-			     'search_items'      => __( 'Search Taxonomy', 'textdomain' ),
-			     'all_items'         => __( 'All Taxonomies', 'textdomain' ),
-			     'parent_item'       => __( 'Parent Taxonomy', 'textdomain' ),
-			     'parent_item_colon' => __( 'Parent Taxonomy:', 'textdomain' ),
-			     'edit_item'         => __( 'Edit Taxonomy', 'textdomain' ),
-			     'update_item'       => __( 'Update Taxonomy', 'textdomain' ),
-			     'add_new_item'      => __( 'Add New Taxonomy', 'textdomain' ),
-			     'new_item_name'     => __( 'New Taxonomy Name', 'textdomain' ),
-			     'menu_name'         => __( 'Taxonomy', 'textdomain' ),
+			     'name'              => _x( 'Taxonomy', 'taxonomy general name', 'fac-hosted-page-button' ),
+			     'singular_name'     => _x( 'Taxonomy', 'taxonomy singular name', 'fac-hosted-page-button' ),
+			     'search_items'      => __( 'Search Taxonomy', 'fac-hosted-page-button' ),
+			     'all_items'         => __( 'All Taxonomies', 'fac-hosted-page-button' ),
+			     'parent_item'       => __( 'Parent Taxonomy', 'fac-hosted-page-button' ),
+			     'parent_item_colon' => __( 'Parent Taxonomy:', 'fac-hosted-page-button' ),
+			     'edit_item'         => __( 'Edit Taxonomy', 'fac-hosted-page-button' ),
+			     'update_item'       => __( 'Update Taxonomy', 'fac-hosted-page-button' ),
+			     'add_new_item'      => __( 'Add New Taxonomy', 'fac-hosted-page-button' ),
+			     'new_item_name'     => __( 'New Taxonomy Name', 'fac-hosted-page-button' ),
+			     'menu_name'         => __( 'Taxonomy', 'fac-hosted-page-button' ),
 			);
 
 			return $labels;

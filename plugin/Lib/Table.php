@@ -29,8 +29,8 @@ if ( ! class_exists( 'Table' ) ) {
 		public function __construct() {
 
 			parent::__construct( [
-				'singular' => __( 'Name', 'textdomain' ),
-				'plural'   => __( 'Names', 'textdomain' ),
+				'singular' => __( 'Name', 'fac-hosted-page-button' ),
+				'plural'   => __( 'Names', 'fac-hosted-page-button' ),
 				'ajax'     => false,
 			] );
 		}
@@ -46,7 +46,7 @@ if ( ! class_exists( 'Table' ) ) {
 			global $wpdb;
 
 			//Take pivotal from URL
-			$link = sanitize_url( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
+			$link = isset( $_GET['link'] ) ? sanitize_url( $_GET['link']) : 'link' ;
 
 			//Build the db query base
 			$sql = "SELECT * FROM {$wpdb->prefix}wordpress_table";
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Table' ) ) {
 		 */
 		public function no_items() {
 
-			_e( 'No Items Added yet.', 'textDomain' );
+			_e( 'No Items Added yet.', 'fac-hosted-page-button' );
 		}
 
 
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Table' ) ) {
 			global $wpdb;
 
 			//Take pivotal from URL
-			$link = sanitize_url( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
+			$link = isset( $_GET['link'] ) sanitize_url(? $_GET['link']) : 'link' );
 
 			//Build the db query base
 			$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}wordpress_table";
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Table' ) ) {
 
 			//Change the page instruction where you want to show it
 			$actions = array(
-					'delete' => sprintf( '<a href="?page=%s&action=%s&instruction=%s&_wpnonce=%s">%s</a>', sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['ID'] ), $delete_nonce, __( 'Delete', 'textdomain' ) )
+					'delete' => sprintf( '<a href="?page=%s&action=%s&instruction=%s&_wpnonce=%s">%s</a>', sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['ID'] ), $delete_nonce, __( 'Delete', 'fac-hosted-page-button' ) )
 					);
 
 			return $title . $this->row_actions( $actions );
@@ -175,10 +175,10 @@ if ( ! class_exists( 'Table' ) ) {
 
 			$columns = array(
 							'cb'		=> '<input type="checkbox" />',
-							'name'	=> __( 'Name', 'textdomain' ),
-							'caseOne'	=> __( 'Case One', 'textdomain' ),
-							'caseTwo'	=> __( 'Case Two', 'textdomain' ),
-							'caseThree'	=> __( 'Case Three', 'textdomain' ),
+							'name'	=> __( 'Name', 'fac-hosted-page-button' ),
+							'caseOne'	=> __( 'Case One', 'fac-hosted-page-button' ),
+							'caseTwo'	=> __( 'Case Two', 'fac-hosted-page-button' ),
+							'caseThree'	=> __( 'Case Three', 'fac-hosted-page-button' ),
 						);
 
 			return $columns;

@@ -51,7 +51,7 @@ if ( ! class_exists( 'RestApi' ) ) {
     		if ( $data ) {
       			return new WP_REST_Response( $data, 200 );
     		} else {
-				return new WP_Error( 'status_code', __( 'message', 'text-domain' ) );
+				return new WP_Error( 'status_code', __( 'message', 'fac-hosted-page-button' ) );
 			}
 		}
 

@@ -64,14 +64,14 @@ if ( ! class_exists( 'Api' ) ) {
 		 * @params $params The paramters to build the request
 		 * @return Array
 		 */
-		public function build() {
+		public function build($params) {
 
 			$args = array(
 						'headers' => $this->headers,
             			'method' => $this->call_type,
 						);
 
-			return $args;
+			return array_merge($args, $params);
 		}
 
 
@@ -80,8 +80,8 @@ if ( ! class_exists( 'Api' ) ) {
 		 *
 		 * @return Array
 		 */
-		public function call() {
-			$result = wp_remote_request($this->endpoint, $this->build());
+		public function call($params) {
+			$result = wp_remote_request($this->endpoint, $this->build($params));
         	return $result;
 		}
 
