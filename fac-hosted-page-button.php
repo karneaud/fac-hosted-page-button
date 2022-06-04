@@ -3,11 +3,11 @@
  Plugin Name: FAC Hosted Page Button
  Plugin URI: https://github.com/nirjharlo/wp-plugin-framework/
  Description: Custom FAC hosted pages button plugin for Wordpress
- Version: 1.0.0
+ Version: 1.0.0-beta
  Author: Kendall Arneaud
  Author URI: https://kendallarneaud.me
  Text Domain: fac-hosted-page-button
- Domain Path: /asset/ln
+ Domain Path: /assets/ln
  License: GPLv2
  License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
