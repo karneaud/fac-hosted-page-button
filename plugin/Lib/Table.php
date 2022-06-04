@@ -46,7 +46,7 @@ if ( ! class_exists( 'Table' ) ) {
 			global $wpdb;
 
 			//Take pivotal from URL
-			$link = ( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
+			$link = sanitize_url( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
 
 			//Build the db query base
 			$sql = "SELECT * FROM {$wpdb->prefix}wordpress_table";
@@ -54,8 +54,8 @@ if ( ! class_exists( 'Table' ) ) {
 
 			//Set filters in the query using $_REQUEST
 			if ( ! empty( $_REQUEST['orderby'] ) ) {
-				$sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
-				$sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';
+				$sql .= ' ORDER BY ' . sanitize_sql_orderby( $_REQUEST['orderby'] );
+				$sql .= ! empty( $_REQUEST['order'] ) ? ' ' . sanitize_text_field( $_REQUEST['order'] ) : ' ASC';
 			}
 			$sql .= " LIMIT $per_page";
 			$sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Table' ) ) {
 			global $wpdb;
 
 			//Take pivotal from URL
-			$link = ( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
+			$link = sanitize_url( isset( $_GET['link'] ) ? $_GET['link'] : 'link' );
 
 			//Build the db query base
 			$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}wordpress_table";
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Table' ) ) {
 
 			//Change the page instruction where you want to show it
 			$actions = array(
-					'delete' => sprintf( '<a href="?page=%s&action=%s&instruction=%s&_wpnonce=%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['ID'] ), $delete_nonce, __( 'Delete', 'textdomain' ) )
+					'delete' => sprintf( '<a href="?page=%s&action=%s&instruction=%s&_wpnonce=%s">%s</a>', sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['ID'] ), $delete_nonce, __( 'Delete', 'textdomain' ) )
 					);
 
 			return $title . $this->row_actions( $actions );
@@ -255,7 +255,7 @@ if ( ! class_exists( 'Table' ) ) {
 			if ( 'delete' === $this->current_action() ) {
 
 				//In our file that handles the request, verify the nonce.
-				$nonce = esc_attr( $_REQUEST['_wpnonce'] );
+				$nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
 
 				if ( ! wp_verify_nonce( $nonce, 'delete_url' ) ) {
 					die( 'Go get a live script kiddies' );
@@ -267,7 +267,7 @@ if ( ! class_exists( 'Table' ) ) {
 			//If the delete bulk action is triggered
 			if ( isset( $_POST['action'] ) ) {
 				if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) ) {
-					$delete_ids = esc_sql( $_POST['bulk-select'] );
+					$delete_ids = sanitize_text_field( $_POST['bulk-select'] );
 					foreach ( $delete_ids as $id ) {
 						self::delete_url( $id );
 					}
