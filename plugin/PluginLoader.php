@@ -45,7 +45,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		 *
 		 * @var String
 		 */
-		protected static $text_domain = FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN;
+		protected static $text_domain = 'fac-hosted-page-button';
 
 
 		/**
