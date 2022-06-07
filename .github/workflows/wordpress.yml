@@ -1,7 +1,6 @@
 name: Deploy to WordPress.org
 on:
   push:
-    branches: [release/beta]
     tags:
     - "*"
 jobs:
