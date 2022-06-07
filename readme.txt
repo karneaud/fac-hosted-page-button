@@ -3,6 +3,7 @@ Contributors: Kendall Arneaud
 Tags: FAC, first atlantic, ecommerce, online, payments, credit card
 Author Url: https://kendallarneaud.me/
 Version: 1.0.0-beta
+Stable Tag:1.0.0-beta
 Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
