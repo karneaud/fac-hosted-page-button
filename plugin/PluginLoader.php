@@ -135,10 +135,10 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		public function page_install() {
         	if(!get_page_by_path( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN, ARRAY_A, 'page' ))
         		wp_insert_post([
-            		'post_title'=>'FAC Hosted Page Button Thank You Page', 
+            		'post_title'=>'FAC Hosted Page Transaction Results Page', 
   					'post_type'=> 'page', 
                 	'post_status' => 'publish',
-  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_page]<!-- /wp:shortcode -->', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ),
+  					'post_content'=> sprintf('<!-- wp:shortcode -->[%s_results_page]<!-- /wp:shortcode -->', FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN ),
             		'post_name' => FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN
             	]);
         	
