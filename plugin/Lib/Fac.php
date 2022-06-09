@@ -37,7 +37,7 @@ class Fac {
     	try {
         	$response = $this->gateway->hostedPage(array_merge(
             			 [
-    						'transactionCode' => TransactionCode::SINGLE_PASS, //Use values based on requirements 
+    						'transactionCode' => TransactionCode::HOSTED_PAGE_3DS, //Use values based on requirements 
     						'pageSet' => 'test',
     						'pageName' => 'test1'
                          ], $params
