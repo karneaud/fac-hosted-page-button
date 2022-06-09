@@ -20,6 +20,17 @@ A custom wordpress plugin developed to facilitate online CC payments using First
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure the plugin's settings on its settings page.
 
+== Requirements ==
+
+* Wordpress > 5.6
+* PHP >= 7.3
+	- PHP cURL
+    - PHP XML
+* Merchant Account from First Atlantic Commerce
+	- Merchant ID
+    - Merchant Pprocessing Password
+    - Hosted Payment Page
+
 == Features == 
 
 * Customizable template files using theme. Just copy over to theme folder in sub directory called 'fac-hosted-page-button'
@@ -59,9 +70,9 @@ Either embed the payment button shortcode into a page/post or call the helper fu
 
 == Notes ==
 
-You will need to add hooks for executing additional events
-
+* You will need to add hooks for executing additional events on button and thank you page
 * `do_action('fac-hosted-page_button_after_page_error', string $transaction_id );` 
 * `do_action('fac-hosted-page_button_after_page_success', string $transaction_id );` 
 * A default results page and url is created  on install
 * Recommend flushing permalinks settings to enable plugin's return response url directives
+* Currently, the plugin supports First Atlantic Commerce's 3DS initatives by default. 
