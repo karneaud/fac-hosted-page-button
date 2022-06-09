@@ -22,7 +22,7 @@ class Shortcode {
 		public function __construct() {
 
         	$this->template = new Templating();
-			add_shortcode( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_page' , array( $this, 'display_page' ) );
+			add_shortcode( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_results_page' , array( $this, 'display_page' ) );
         	add_shortcode( FAC_HOSTED_PAGE_BUTTON_TEXT_DOMAIN . '_payment_button', [$this, 'create_payment_buton'] );
 		}
 
