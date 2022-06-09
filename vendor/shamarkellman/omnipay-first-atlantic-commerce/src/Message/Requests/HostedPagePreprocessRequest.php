@@ -7,13 +7,11 @@ use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\FirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
 use Omnipay\FirstAtlanticCommerce\Traits\GeneratesSignature;
 use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
-use Omnipay\FirstAtlanticCommerce\Traits\RecurringTrait;
 use SimpleXMLElement;
 
 class HostedPagePreprocessRequest extends AbstractRequest
 {
     use ParameterTrait;
-    use RecurringTrait;
     use GeneratesSignature;
 
     protected string $requestName = 'HostedPagePreprocess';
@@ -60,28 +58,11 @@ class HostedPagePreprocessRequest extends AbstractRequest
             'SignatureMethod' => 'SHA1',
             'TransactionCode' => $this->getTransactionCode(),
         ];
-        
-        if( $this->getIsRecurring()) {
-            $this->validate(
-            'executionDate',
-             'frequency',
-                'numberOfRecurrences');
-            
-            if( !($date = date('Ymd', strtotime($this->getExecutionDate())) ) || ($date <= date('Ymd') ) ) throw new InvalidRequestException(401, 'Invalid Execution Date');
-            
-            $recurringDetails = array_merge($transactionDetails, [
-                                        'ExecutionDate' => $date,
-                                        'Frequency' => $this->getFrequency(),
-                                        'NumberOfRecurrences' => $this->getNumberOfRecurrences(),
-                                        'TransactionCode' => $this->getRecurringTransactionCode(),
-                                        'IsRecurring' => true
-                                    ]);
-        }
 
-        return array_merge(isset($recurringDetails)? ['RecurringDetails' => $recurringDetails ] : [], [
+        return [
             'CardHolderResponseURL' => $this->getCardHolderResponseURL(),
-            'TransactionDetails' => $transactionDetails
-        ]);
+            'TransactionDetails' => $transactionDetails,
+        ];
     }
 
     public function getCardHolderResponseURL()
