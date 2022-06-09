@@ -2,9 +2,6 @@
 /.git
 /.github
 /node_modules
-
-.distignore
 .gitignore
 .editorconfig
-.gitattributes
 .travis.yml
