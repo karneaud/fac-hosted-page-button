@@ -101,7 +101,7 @@ if ( ! class_exists( 'Table' ) ) {
 			global $wpdb;
 
 			//Take pivotal from URL
-			$link = isset( $_GET['link'] ) sanitize_url(? $_GET['link']) : 'link' );
+			$link = isset( $_GET['link'] ) ? sanitize_url( $_GET['link']) : 'link' ;
 
 			//Build the db query base
 			$sql = "SELECT COUNT(*) FROM {$wpdb->prefix}wordpress_table";
