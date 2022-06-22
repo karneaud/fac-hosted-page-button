@@ -81,7 +81,7 @@ fac_hosted_page_button_display_payment_button(['amount'=>200.34,'currency'=>'JMD
 = 1.0.0-beta =
 * Plugin released. 
 = 1.0.1-beta =
-Security updates 
+* Security updates 
 
 ### Notes 
 
