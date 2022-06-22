@@ -29,7 +29,7 @@ if ( ! class_exists( 'PluginLoader' ) ) {
 		/**
 		 * @var String
 		 */
-		protected $version = '1.0.0-beta';
+		protected $version = '1.0.1-beta';
 
 
 		/**

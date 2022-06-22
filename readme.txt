@@ -2,8 +2,8 @@
 Contributors: Kendall Arneaud
 Tags: gateway, first atlantic, e-commerce, online, payments, credit card
 Author Url: https://kendallarneaud.me/
-Version: 1.0.0-beta
-Stable Tag: 1.0.0-beta
+Version: 1.0.1-beta
+Stable Tag: 1.0.1-beta
 Requires PHP: 7.4
 Tested up to: 6.0
 License: GPLv2 or later
@@ -80,6 +80,8 @@ fac_hosted_page_button_display_payment_button(['amount'=>200.34,'currency'=>'JMD
 ### Changelog 
 = 1.0.0-beta =
 * Plugin released. 
+= 1.0.1-beta =
+Security updates 
 
 ### Notes 
 
