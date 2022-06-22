@@ -1,10 +1,9 @@
-
 ## FAC Hosted Page Button 
 Contributors: Kendall Arneaud
 Tags: gateway, first atlantic, e-commerce, online, payments, credit card
 Author Url: https://kendallarneaud.me/
-Version: 1.0.0-beta
-Stable Tag: 1.0.0-beta
+Version: 1.0.1-beta
+Stable Tag: 1.0.1-beta
 Requires PHP: 7.4
 Tested up to: 6.0
 License: GPLv2 or later
@@ -63,14 +62,14 @@ Either embed the payment button shortcode into a page/post or call the helper fu
 E.g. 
 
 #### Payment Link Button 
-````
+```
 [fac-hosted-page_button_payment_button amount="20.23" currency="BBD" transaction_id="A-9191" text="Pay Now"]
-````
-#### Custom Results Pages ===
-````
-[fac-hosted-page_button_page ["page"="path/to/template.php" message="Response MEssage" transaction_id="A-9191" code="200"]]`
+```
+#### Custom Results Pages 
+```
+[fac-hosted-page_button_page ["page"="path/to/template.php" message="Response MEssage" transaction_id="A-9191" code="200"]]
 fac_hosted_page_button_display_payment_button(['amount'=>200.34,'currency'=>'JMD',....])
-````
+```
 
 ### Screenshots
 1. Use shortcode in page 
@@ -81,6 +80,8 @@ fac_hosted_page_button_display_payment_button(['amount'=>200.34,'currency'=>'JMD
 ### Changelog 
 = 1.0.0-beta =
 * Plugin released. 
+= 1.0.1-beta =
+Security updates 
 
 ### Notes 
 
