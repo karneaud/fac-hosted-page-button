@@ -81,13 +81,13 @@ fac_hosted_page_button_display_payment_button(['amount'=>200.34,'currency'=>'JMD
 = 1.0.0-beta =
 * Plugin released. 
 = 1.0.1-beta =
-* Security updates 
+* Dependency security updates 
 
 ### Notes 
 
 * You can optionally add hooks for executing additional events on button template and thank you page template
 	* `do_action('fac-hosted-page_button_after_page_error', string $transaction_id );` 
-	* `do_action('fac-hosted-page_button_after_page_success', string $transaction_id );` 
+	* `do_action('fac-hosted-page_button_after_page_success', string $transaction_id );`
 * A default results page and url is created on install
 * Recommend flushing permalinks settings to enable plugin's return response url directives
 * Currently, the plugin supports First Atlantic Commerce's 3DS initiatives by default. 
